@@ -1,20 +1,25 @@
-
-import React from 'react';
-import ReceiptCard from './ReceiptCard.js';
-// import './App.css';
-
 import React from "react";
-import "./styles/App.css";
-import Dashboard from "./components/Dashboard";
+import { Route } from 'react-router-dom'
 
+import "./styles/App.css";
+import PrivateRoute from './components/PrivateRoute'
+import Dashboard from "./components/Dashboard";
+import Nav from './components/Nav'
+import CreateNewUser from './components/CreateNewUser'
+import Login from './components/Login'
+import AddReceipt from './components/AddReceipt'
+import ReceiptCard from './ReceiptCard.js';
 
 function App() {
   return (
     <div className="App">
+      <Nav/>
+      <Route path='/login' component={Login}/>
+      <Route path='/sign-up' component={CreateNewUser}/>
 
-
-      {/* <NavBar/> */}
-      <Dashboard />
+      <PrivateRoute exact path="/" component={Dashboard}/>
+      <PrivateRoute path="/add-receipt" component={AddReceipt} />
+      
     </div>
   );
 }
