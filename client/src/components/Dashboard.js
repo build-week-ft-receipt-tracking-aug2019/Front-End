@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import { Tab } from "semantic-ui-react";
+//modal imports
+import { Button, Header, Image, Modal } from "semantic-ui-react";
+import AddReceipt from "./AddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 
@@ -28,7 +31,18 @@ const panes = [
     pane: {
       content: (
         <Fragment>
-          <h2 className="tabHeading">Your Receipts</h2>
+          <div className="tabHeading">
+            <h2>Your Receipts</h2>
+            <Modal
+              trigger={<Button className="formModalButton">+</Button>}
+              centered={false}
+            >
+              <Modal.Header>Add Your Receipt Info</Modal.Header>
+              <Modal.Content>
+                <AddReceipt />
+              </Modal.Content>
+            </Modal>
+          </div>
           {fakeData.map(data => {
             return (
               <TabContent
@@ -48,7 +62,18 @@ const panes = [
     pane: {
       content: (
         <Fragment>
-          <h2 className="tabHeading">Your Receipts</h2>
+          <div className="tabHeading">
+            <h2>Your Receipts</h2>
+            <Modal
+              trigger={<Button className="formModalButton">+</Button>}
+              centered={false}
+            >
+              <Modal.Header>Add Your Receipt Info</Modal.Header>
+              <Modal.Content>
+                <AddReceipt />
+              </Modal.Content>
+            </Modal>
+          </div>
           {fakeData.map(data => {
             return (
               <TabContent
@@ -68,7 +93,18 @@ const panes = [
     pane: {
       content: (
         <Fragment>
-          <h2 className="tabHeading">Your Receipts</h2>
+          <div className="tabHeading">
+            <h2>Your Receipts</h2>
+            <Modal
+              trigger={<Button className="formModalButton">+</Button>}
+              centered={false}
+            >
+              <Modal.Header>Add Your Receipt Info</Modal.Header>
+              <Modal.Content>
+                <AddReceipt />
+              </Modal.Content>
+            </Modal>
+          </div>
           {fakeData.map(data => {
             return (
               <TabContent
