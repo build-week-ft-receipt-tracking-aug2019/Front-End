@@ -2933,7 +2933,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     sha.js "^2.4.8"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 486e955610131f92ca924958f3fc1d0fccb90ee2
 create-react-context@^0.2.2:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
@@ -2942,6 +2945,7 @@ create-react-context@^0.2.2:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
+<<<<<<< HEAD
 >>>>>>> 0429445a43ab783921f8f09ae081e0678fa8d190
 create-react-context@^0.3.0:
   version "0.3.0"
@@ -2951,6 +2955,8 @@ create-react-context@^0.3.0:
     gud "^1.0.0"
     warning "^4.0.3"
 
+=======
+>>>>>>> 486e955610131f92ca924958f3fc1d0fccb90ee2
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4368,6 +4374,7 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+<<<<<<< HEAD
 formik-semantic-ui@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/formik-semantic-ui/-/formik-semantic-ui-0.10.0.tgz#5040bde181cda94dd260c5529b9c2e86611953a2"
@@ -4376,6 +4383,8 @@ formik-semantic-ui@^0.10.0:
     hoist-non-react-statics "^3.3.0"
     prop-types "^15.7.2"
 
+=======
+>>>>>>> 486e955610131f92ca924958f3fc1d0fccb90ee2
 formik@^1.5.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/formik/-/formik-1.5.8.tgz#eee8cd345effe46839bc748c7f920486f12f14b0"
@@ -8396,7 +8405,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+<<<<<<< HEAD
 react-is@^16.7.0, react-is@^16.8.6:
+=======
+react-is@^16.7.0:
+>>>>>>> 486e955610131f92ca924958f3fc1d0fccb90ee2
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==

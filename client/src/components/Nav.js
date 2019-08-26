@@ -15,6 +15,7 @@ class Nav extends Component {
 
     return (
       <Menu inverted size='large' color='green' fluid widths={4}>
+          {/* {the icon looks a little -wonky- will update during polish} */}
         <Menu.Item fitted
           name='dashboard'
           active={activeItem === 'dashboard'}

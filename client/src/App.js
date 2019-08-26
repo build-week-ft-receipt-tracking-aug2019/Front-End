@@ -10,6 +10,8 @@ function App() {
     <div className="App">
       <Nav/>
       <Dashboard />
+      <h1>Hello from App.js</h1>
+      <AddReceipt />
     </div>
   );
 }
