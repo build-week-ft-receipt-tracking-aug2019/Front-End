@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+}
+
+.tab {
+  width           : 100%;
+  padding         : 1em 2em;
+  background-color: #5bba6f;
+  border-radius   : 5px;
+  margin          : 0.5em auto;
+
+}
+
+h2.tabHeading {
+  background-color: #e6e8e6;
+  border-radius   : 5px;
+  border-bottom   : 1px solid #e6e8e6;
+  padding         : 1em;
+  color           : #003b36;
+}
+
+.tabContent {
+  display            : flex;
+  justify-content    : space-evenly;
+  padding            : 1em;
+  /* background-color: #e6e8e6; */
+}
+
+.nameDateCol {
+  width     : 75%;
+  text-align: left;
+}
+
+.totalCol {
+  width     : 25%;
+  text-align: left;
+  margin    : auto 0;
+}
