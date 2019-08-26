@@ -3,7 +3,6 @@ import React from "react";
 const TabContent = ({ merchant, date, total }) => {
   return (
     <div className="tab">
-      <h2 className="tabHeading">Your Receipts</h2>
       <div className="tabContent">
         <div className="nameDateCol">
           <h3>{merchant}</h3>
