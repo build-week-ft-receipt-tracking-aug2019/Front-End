@@ -4,6 +4,7 @@ import Dashboard from "./components/Dashboard";
 import Nav from './components/Nav'
 import CreateNewUser from './components/CreateNewUser'
 import Login from './components/Login'
+import AddReceipt from './components/AddReceipt'
 
 function App() {
   return (
