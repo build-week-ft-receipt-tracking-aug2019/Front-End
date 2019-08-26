@@ -2,11 +2,26 @@ import React, { useState } from "react";
 import { Tab } from "semantic-ui-react";
 import TabContent from "./TabContent";
 
+const fakeData = {
+  id: 1,
+  merchant: "Publix",
+  date: "08/26/19",
+  total: "$178.96",
+  category: "Food",
+  img: ""
+};
+
 const panes = [
   {
     menuItem: "Recent",
     pane: {
-      content: <TabContent />
+      content: (
+        <TabContent
+          merchant={fakeData.merchant}
+          date={fakeData.date}
+          total={fakeData.total}
+        />
+      )
     }
   },
   {

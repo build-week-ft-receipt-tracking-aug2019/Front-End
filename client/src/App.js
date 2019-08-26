@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import Dashboard from "./components/Dashboard";
 import Nav from './components/Nav'
 import CreateNewUser from './components/CreateNewUser'

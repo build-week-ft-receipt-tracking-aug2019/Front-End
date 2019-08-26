@@ -1,7 +1,7 @@
 .App {
   text-align: center;
-  width: 375px;
-  margin:auto;
+  width     : 375px;
+  margin    : auto;
 }
 
 .active {
@@ -17,8 +17,8 @@
 }
 
 .login-Form {
-  display:flex;
-  flex-direction:column;
+  display        : flex;
+  flex-direction : column;
   justify-content: center;
   padding: 15px;
 }
