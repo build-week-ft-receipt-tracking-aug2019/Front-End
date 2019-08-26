@@ -1,5 +1,8 @@
 import React from "react";
+import { Route } from 'react-router-dom'
+
 import "./styles/App.css";
+
 import Dashboard from "./components/Dashboard";
 import Nav from './components/Nav'
 import CreateNewUser from './components/CreateNewUser'
@@ -10,9 +13,11 @@ function App() {
   return (
     <div className="App">
       <Nav/>
-      <Dashboard />
-      <h1>Hello from App.js</h1>
-      <AddReceipt />
+      <Route path='/login' component={Login}/>
+      <Route path='/sign-up' component={CreateNewUser}/>
+
+      <Route exact path="/" component={Dashboard}/>
+      <Route path="/add-receipt" component={AddReceipt} />
     </div>
   );
 }
