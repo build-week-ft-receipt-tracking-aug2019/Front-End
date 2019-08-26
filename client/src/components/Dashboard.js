@@ -1,45 +1,38 @@
-import React from "react";
-import { Tab, Menu, Icon } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
-
-const DashBaord = props => <NavLink exact {...props} />;
-
-const createLabel = (iconName, labelText) => (
-  <span>
-    <Icon name={iconName} />
-    {labelText}
-  </span>
-);
-
-const recentLabel = createLabel("recent", "Recent");
-const threeMonthLabel = createLabel("threeMonths", "View Past 3 Months");
-const allLabel = createLabel("recent", "View All");
+import React, { useState } from "react";
+import { Tab } from "semantic-ui-react";
+import TabContent from "./TabContent";
 
 const panes = [
   {
-    menuItem: (
-      <Menu.Item key="recent" as={DashBaord} to={`/`} content={recentLabel} />
-    )
+    menuItem: "Recent",
+    pane: {
+      content: <TabContent />
+    }
   },
   {
-    menuItem: (
-      <Menu.Item
-        key="chars"
-        as={DashBaord}
-        to={`/threeMonth`}
-        content={threeMonthLabel}
-      />
-    )
+    menuItem: "3 Month Overview",
+    pane: {
+      content: <TabContent />
+    }
   },
   {
-    menuItem: (
-      <Menu.Item key="chars" as={DashBaord} to={`/all`} content={allLabel} />
-    )
+    menuItem: "All Receipts",
+    pane: {
+      content: <TabContent />
+    }
   }
 ];
 
-const TabDash = () => (
-  <Tab panes={panes} renderActiveOnly={false} activeClassName="active" />
-);
+const Dashboard = () => {
+  return (
+    <div>
+      <Tab
+        style={{ backgroundColor: "#e6e8e6" }}
+        panes={panes}
+        renderActiveOnly={false}
+      />
+    </div>
+  );
+};
 
-export default TabDash;
+export default Dashboard;

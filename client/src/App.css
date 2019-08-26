@@ -5,3 +5,8 @@
 .active {
   background-color: #5bba6f;
 }
+
+.tab {
+  width     : 100%;
+  text-align: left;
+}
