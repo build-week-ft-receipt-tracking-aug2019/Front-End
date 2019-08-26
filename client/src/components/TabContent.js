@@ -1,11 +1,17 @@
 import React from "react";
 
-const TabContent = () => {
+const TabContent = ({ merchant, date, total }) => {
   return (
     <div className="tab">
-      <h2>Your Most Recent Receipts</h2>
+      <h2 className="tabHeading">Your Receipts</h2>
       <div className="tabContent">
-        <h4>Merchant Name</h4>
+        <div className="nameDateCol">
+          <h3>{merchant}</h3>
+          <h4>{date}</h4>
+        </div>
+        <div className="totalCol">
+          <h3>Total: {total}</h3>
+        </div>
       </div>
     </div>
   );
