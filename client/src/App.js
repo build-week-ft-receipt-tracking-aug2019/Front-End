@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from 'react-router-dom'
 
 import "./styles/App.css";
-
+import PrivateRoute from './components/PrivateRoute'
 import Dashboard from "./components/Dashboard";
 import Nav from './components/Nav'
 import CreateNewUser from './components/CreateNewUser'
@@ -16,8 +16,9 @@ function App() {
       <Route path='/login' component={Login}/>
       <Route path='/sign-up' component={CreateNewUser}/>
 
-      <Route exact path="/" component={Dashboard}/>
-      <Route path="/add-receipt" component={AddReceipt} />
+      <PrivateRoute exact path="/" component={Dashboard}/>
+      <PrivateRoute path="/add-receipt" component={AddReceipt} />
+      
     </div>
   );
 }
