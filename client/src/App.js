@@ -1,3 +1,8 @@
+
+import React from 'react';
+import ReceiptCard from './ReceiptCard.js';
+// import './App.css';
+
 import React from "react";
 import { Route } from 'react-router-dom'
 
@@ -8,6 +13,7 @@ import Nav from './components/Nav'
 import CreateNewUser from './components/CreateNewUser'
 import Login from './components/Login'
 import AddReceipt from './components/AddReceipt'
+
 
 function App() {
   return (
