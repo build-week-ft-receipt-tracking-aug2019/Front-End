@@ -4,14 +4,19 @@ import styled from "styled-components";
 
 const StyledReceiptItem = styled.div`
   background-color: #e6e8e6;
-  border: black 5px;
+  border-radius: 8px;
+  margin: 5px;
   display: flex;
 `;
 const Content = styled.div`
 margin: 20px;
 width: 40%;
-display: flex;
+height: 150px;
+background-color:#5bba6f
+border-radius: 8px;
+font-size: 1.5rem;
 `;
+
 
 const ReceiptImage = styled.div`
 width: 55%;
@@ -35,12 +40,12 @@ export default function ReceiptCard() {
           </Item.Content>
         </Content>
 
-        <ReceiptImage>
-         Image Here(recep.image)
-        </ReceiptImage>
-        </StyledReceiptItem>
-        <button>Edit</button>
-        <button>Delete</button>
+            <ReceiptImage>
+               Image Here(recep.image})
+            </ReceiptImage>
+     </StyledReceiptItem>
+         <button>Edit</button>
+         <button>Delete</button>
       </Item>
    
     

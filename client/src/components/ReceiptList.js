@@ -8,7 +8,7 @@ export default function ReceiptList(){
 
     useEffect(()=>{
         axios
-        .get("https://receipt-tracker-api.herokuapp.com/users/receipts")
+        .get('https://receipt-tracker-api.herokuapp.com/user/receipt')
         .then(res =>{
             console.log('receipt', res.data.results);
             setReceipt(res.data.results);
