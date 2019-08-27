@@ -14,6 +14,7 @@ function App() {
       <Nav />
       <Route path="/login" component={Login} />
       <Route path="/sign-up" component={CreateNewUser} />
+      {/* private routes below */}
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
     </div>
