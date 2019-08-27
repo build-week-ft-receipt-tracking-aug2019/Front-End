@@ -28,7 +28,7 @@ const errorStyle = {
 };
 
 // To do:
-// Will need to take in render props to push component back to receipt list upon completion
+// Need to structure
 
 const AddReceipt = ({ errors, touched }) => {
   const setFieldValue = event => {
@@ -88,7 +88,7 @@ const AddReceiptForm = withFormik({
       date: date || "",
       category: category || "",
       image: image || "",
-      amount: amount || ""
+      amount: amount || "",
     };
   },
 
@@ -103,9 +103,11 @@ const AddReceiptForm = withFormik({
   }),
 
     handleSubmit(values, { props }) {
-        console.log(props);
-        console.log(values);
-        props.addNewReceipt(values);
+        // Had to deconstruct my values from formik to add the username from redux store to put in request
+        const valuesWithUsername = ({ values });
+        valuesWithUsername.values.username = props.username;
+        console.log(valuesWithUsername);
+        props.addNewReceipt(valuesWithUsername);
         // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
         // Will need to somehow props.history.push('/dashboard') upon success;
     }
@@ -114,10 +116,11 @@ const AddReceiptForm = withFormik({
 const mapPropsToState = state => {
     console.log(state);
     return {
+        username: state.username,
         isLoading: state.isLoading,
         error: state.error,
         data: state.data
     }
-}
+};
 
 export default connect(mapPropsToState, { addNewReceipt })(AddReceiptForm);

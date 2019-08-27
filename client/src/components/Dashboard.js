@@ -101,7 +101,7 @@ const panes = [
 
 const Dashboard = props => {
   useEffect(() => {
-    props.getReceipts();
+    props.getReceipts(props);
     console.log('Dashboard mounted')
   }, [])
 
@@ -120,6 +120,7 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
+    username: state.username,
     isLoading: state.isLoading,
     error: state.error,
     data: state.data
