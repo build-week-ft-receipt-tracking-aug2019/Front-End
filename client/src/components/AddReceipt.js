@@ -103,9 +103,10 @@ const AddReceiptForm = withFormik({
   }),
 
     handleSubmit(values, { props }) {
-        console.log(props)
+        console.log(props);
         console.log(values);
         props.addNewReceipt(values);
+        // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
         // Will need to somehow props.history.push('/dashboard') upon success;
     }
 })(AddReceipt)
