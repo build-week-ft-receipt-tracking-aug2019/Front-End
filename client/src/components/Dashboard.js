@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
+import { connect } from 'react-redux';
 import { getReceipts } from "../actions";
+
 
 const fakeData = [
   {
@@ -102,6 +104,7 @@ const Dashboard = props => {
     props.getReceipts();
     console.log('Dashboard mounted')
   }, [])
+
 
   return (
     <div>
