@@ -4,23 +4,19 @@
   margin    : auto;
 }
 
-.active {
-  background-color: #5bba6f;
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-height      : 100vh;
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
 }
 
 .login-Form {
   display        : flex;
   flex-direction : column;
   justify-content: center;
-  padding: 15px;
+  padding        : 15px;
 }
 
 .logoBoi {
