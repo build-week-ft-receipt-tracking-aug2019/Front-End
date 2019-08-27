@@ -27,8 +27,10 @@ const errorStyle = {
   color: "red"
 };
 
-// To do:
-// Need to structure
+// * README *:
+// As of 18:00 Tuesday getting 404 error on posting new receipt.
+// Believe issue is with the back-end api as the data passed into the action at line 111
+//  is exactly what the back-end README calls for.
 
 const AddReceipt = ({ errors, touched }) => {
   const setFieldValue = event => {
@@ -42,12 +44,12 @@ const AddReceipt = ({ errors, touched }) => {
         {touched.date && errors.date && <p style={errorStyle}>{errors.date}</p>}
         <Field
           style={inputStyle}
-          type="text"
-          name="amount"
-          placeholder="Enter amount"
+          type="number"
+          name="amount_spent"
+          placeholder="Enter amount_spent"
         />
-        {touched.amount && errors.amount && (
-          <p style={errorStyle}>{errors.amount}</p>
+        {touched.amount_spent && errors.amount_spent && (
+          <p style={errorStyle}>{errors.amount_spent}</p>
         )}
         <Field
           style={inputStyle}
@@ -82,13 +84,14 @@ const AddReceipt = ({ errors, touched }) => {
 };
 
 const AddReceiptForm = withFormik({
-  mapPropsToValues({ merchant, date, category, image, amount }) {
+  mapPropsToValues({ merchant, date, category, image, amount_spent }) {
     return {
       merchant: merchant || "",
       date: date || "",
       category: category || "",
-      image: image || "",
-      amount: amount || "",
+      // image commented out until we confirm it has been added to back end
+      // image: image || "",
+      amount_spent: amount_spent || "",
     };
   },
 
@@ -97,26 +100,25 @@ const AddReceiptForm = withFormik({
     date: Yup.string().required("Date is required"),
     category: Yup.string().required("Please choose a category"),
     image: Yup.string().notRequired(),
-    amount: Yup.number()
-      .required("Amount is required")
+    amount_spent: Yup.number()
+      .required("Amount_spent is required")
       .positive()
   }),
 
     handleSubmit(values, { props }) {
         // Had to deconstruct my values from formik to add the username from redux store to put in request
         const valuesWithUsername = ({ values });
-        valuesWithUsername.values.username = props.username;
-        console.log(valuesWithUsername);
-        props.addNewReceipt(valuesWithUsername);
+        valuesWithUsername.values.user_username = props.user_username;
+        props.addNewReceipt(valuesWithUsername.values);
+        // Will need to push to dashboard once back-end is finalized. See below:
         // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
-        // Will need to somehow props.history.push('/dashboard') upon success;
     }
 })(AddReceipt)
 
 const mapPropsToState = state => {
     console.log(state);
     return {
-        username: state.username,
+        user_username: state.user_username,
         isLoading: state.isLoading,
         error: state.error,
         data: state.data

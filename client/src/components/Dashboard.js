@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { Tab } from "semantic-ui-react";
-import { connect } from 'react-redux';
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
@@ -120,7 +119,7 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
-    username: state.username,
+    user_username: state.user_username,
     isLoading: state.isLoading,
     error: state.error,
     data: state.data

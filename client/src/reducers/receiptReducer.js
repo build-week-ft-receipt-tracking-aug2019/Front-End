@@ -8,7 +8,7 @@ import {
 } from '../actions/index';
 
 const initialState = {
-    username: '',
+    user_username: '',
     isLoading: false,
     error: '',
     data: []
@@ -43,7 +43,7 @@ export const receiptReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                username: action.payload
+                user_username: action.payload
             }
         case ERROR:
             return {
