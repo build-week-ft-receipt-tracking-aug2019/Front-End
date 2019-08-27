@@ -99,7 +99,6 @@ const panes = [
 const Dashboard = (props) => {
   return (
     <div>
-      <button onClick={() => console.log(props.state)}>state</button>
       <Tab
         style={{ backgroundColor: "#e6e8e6" }}
         panes={panes}
@@ -109,12 +108,4 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = state => ({
-  state: state
-});
-
-export default connect(
-  mapStateToProps,
-)(Dashboard);
-
-// export default Dashboard;
+export default Dashboard;

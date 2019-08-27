@@ -34,7 +34,6 @@ const Login = ({ errors, touched, username }) => {
                     placeholder='Password'
                 />
                 {touched.password && errors.password && <p className="error">{errors.password}</p>}
-                <button type='button' onClick={AddUsernameToState(username)}></button>
                 <button type='submit'>Login &rarr;</button>
             </Form>
         </>
@@ -61,7 +60,6 @@ const FormikForm = withFormik({
         axios
             .post('https://receipt-tracker-api.herokuapp.com/login', values)
             .then(res => {
-                console.log(props)
                 localStorage.setItem('token', res.data.token);
                 props.AddUsernameToState(values.username)
                 props.history.push('/')
