@@ -11,12 +11,25 @@
 
 }
 
-h2.tabHeading {
+.tabHeading {
+  display         : flex;
+  flex-wrap       : wrap;
+  justify-content : space-between;
   background-color: #e6e8e6;
   border-radius   : 5px;
-  border-bottom   : 1px solid #e6e8e6;
   padding         : 1em;
-  color           : #003b36;
+}
+
+.tabHeading .formModalButton {
+  background-color: #e6e8e6;
+  border          : 3px solid #249633;
+  align-content   : right;
+}
+
+.tabHeading .formModalButton:hover {
+  background-color: #249633;
+  color           : #e6e8e6;
+  width           : none;
 }
 
 .tabContent {
