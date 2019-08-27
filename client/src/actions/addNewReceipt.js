@@ -6,8 +6,8 @@ export const addNewReceipt = newReceipt => {
     return dispatch => {
         dispatch({ type: ADD_RECEIPT_START })
         axiosWithAuth()
-            // Will need to fill in endpoint below:
-            // https://receipt-tracker-api.herokuapp.com/users/receipt
+            // Enpoint below is accurate as of 18:00 on back-end README but 
+            // I receive a 404 error when adding. See notes on addReceipt.js line: 30
             .post('https://receipt-tracker-api.herokuapp.com/users/receipts', newReceipt)
             .then(res => {
                 console.log(res);
