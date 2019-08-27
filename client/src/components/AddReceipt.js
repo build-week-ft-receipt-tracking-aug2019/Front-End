@@ -1,25 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Form, Field, withFormik } from 'formik';
-import * as Yup from 'yup';
+import React from "react";
+import { connect } from "react-redux";
+import { Form, Field, withFormik } from "formik";
+import * as Yup from "yup";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 
-import { addNewReceipt } from '../actions/index';
+import { addNewReceipt } from "../actions/index";
 
-const formStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-};
+// const formStyle = {
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems: "center"
+// };
 
-const inputStyle = {
-  width: "200px",
-  margin: "10px"
-};
+// const inputStyle = {
+//   width: "200px",
+//   margin: "10px"
+// };
 
-const buttonStyle = {
-  width: "200px",
-  margin: "10px"
-};
+// const buttonStyle = {
+//   width: "200px",
+//   margin: "10px"
+// };
 
 const errorStyle = {
   fontSize: ".5em",
@@ -35,48 +37,64 @@ const AddReceipt = ({ errors, touched }) => {
   };
 
   return (
-    <div>
-      <Form style={formStyle}>
-        <Field style={inputStyle} type="date" name="date" placeholder="date" />
-        {touched.date && errors.date && <p style={errorStyle}>{errors.date}</p>}
-        <Field
-          style={inputStyle}
-          type="text"
-          name="amount"
-          placeholder="Enter amount"
-        />
-        {touched.amount && errors.amount && (
-          <p style={errorStyle}>{errors.amount}</p>
-        )}
-        <Field
-          style={inputStyle}
-          type="text"
-          name="category"
-          placeholder="selector for category will go here"
-        />
-        {touched.category && errors.category && (
-          <p style={errorStyle}>{errors.category}</p>
-        )}
-        <Field
-          style={inputStyle}
-          type="text"
-          name="merchant"
-          placeholder="Enter merchant info:"
-        />
-        {touched.merchant && errors.merchant && (
-          <p style={errorStyle}>{errors.merchant}</p>
-        )}
-        <Field
-          style={inputStyle}
-          type="file"
-          name="image"
-          // onChange={setFieldValue}
-        />
-        <button style={buttonStyle} type="submit">
-          Add
-        </button>
+    <SemForm className="formContainers">
+      <Form>
+        <SemForm.Field>
+          <Field type="date" name="date" placeholder="date" />
+          {touched.date && errors.date && (
+            <p style={errorStyle}>{errors.date}</p>
+          )}
+        </SemForm.Field>
+        <SemForm.Field>
+          <Field type="text" name="amount" placeholder="Enter amount" />
+          {touched.amount && errors.amount && (
+            <p style={errorStyle}>{errors.amount}</p>
+          )}
+        </SemForm.Field>
+        <SemForm.Field>
+          <Field
+            type="text"
+            name="category"
+            placeholder="selector for category will go here"
+          />
+          {touched.category && errors.category && (
+            <p style={errorStyle}>{errors.category}</p>
+          )}
+        </SemForm.Field>
+        <SemForm.Field>
+          <Field
+            type="text"
+            name="merchant"
+            placeholder="Enter merchant info:"
+          />
+          {touched.merchant && errors.merchant && (
+            <p style={errorStyle}>{errors.merchant}</p>
+          )}
+        </SemForm.Field>
+        <SemForm.Field>
+          <label for="upload" className="custom-upload">
+            <p>Upload an image</p>
+            <Field
+              type="file"
+              name="image"
+              id="upload"
+              style={{ display: "none" }}
+              // onChange={setFieldValue}
+            />
+          </label>
+        </SemForm.Field>
+        <Button
+          style={{
+            margin: "1em auto",
+            backgroundColor: "#25BB49",
+            color: "white"
+          }}
+          type="submit"
+        >
+          Add Receipt &rarr;
+        </Button>
       </Form>
-    </div>
+    </SemForm>
   );
 };
 
@@ -101,21 +119,25 @@ const AddReceiptForm = withFormik({
       .positive()
   }),
 
-    handleSubmit(values, { props }) {
-        console.log(props)
-        console.log(values);
-        props.addNewReceipt(values);
-        // Will need to somehow props.history.push('/dashboard') upon success;
-    }
-})(AddReceipt)
+  handleSubmit(values, { props }) {
+    console.log(props);
+    console.log(values);
+    props.addNewReceipt(values);
+    // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
+    // Will need to somehow props.history.push('/dashboard') upon success;
+  }
+})(AddReceipt);
 
 const mapPropsToState = state => {
-    console.log(state);
-    return {
-        isLoading: state.isLoading,
-        error: state.error,
-        data: state.data
-    }
-}
+  console.log(state);
+  return {
+    isLoading: state.isLoading,
+    error: state.error,
+    data: state.data
+  };
+};
 
-export default connect(mapPropsToState, { addNewReceipt })(AddReceiptForm);
+export default connect(
+  mapPropsToState,
+  { addNewReceipt }
+)(AddReceiptForm);

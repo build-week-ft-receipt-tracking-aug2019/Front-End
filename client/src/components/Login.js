@@ -2,34 +2,48 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 const Login = ({ errors, touched }) => {
   return (
-    <>
+    <SemForm className="formContainers">
       <Form className="login-Form">
         <h1>Login:</h1>
-        <Field
-          name="username"
-          type="text"
-          autoComplete="off"
-          placeholder="username"
-        />
-        {touched.username && errors.username && (
-          <p className="error">{errors.username}</p>
-        )}
-        <Field
-          name="password"
-          type="password"
-          autoComplete="off"
-          placeholder="Password"
-        />
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
-        <button type="submit">Login &rarr;</button>
+        <SemForm.Field>
+          <Field
+            name="username"
+            type="text"
+            autoComplete="off"
+            placeholder="username"
+          />
+          {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
+          )}
+        </SemForm.Field>
+        <SemForm.Field>
+          <Field
+            name="password"
+            type="password"
+            autoComplete="off"
+            placeholder="Password"
+          />
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
+        </SemForm.Field>
+        <Button
+          style={{
+            margin: "1em auto",
+            backgroundColor: "#25BB49",
+            color: "white"
+          }}
+          type="submit"
+        >
+          Login &rarr;
+        </Button>
       </Form>
-    </>
+    </SemForm>
   );
 };
 
@@ -48,7 +62,7 @@ const FormikForm = withFormik({
 
   handleSubmit(values) {
     axios
-      .post("EndpointHere", values)
+      .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
         console.log(res.data);

@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Tab } from "semantic-ui-react";
+import { connect } from "react-redux";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
+import { getReceipts } from "../actions";
 
 const fakeData = [
   {
@@ -95,7 +97,12 @@ const panes = [
   }
 ];
 
-const Dashboard = () => {
+const Dashboard = props => {
+  useEffect(() => {
+    props.getReceipts();
+    console.log("Dashboard mounted");
+  }, []);
+
   return (
     <div>
       <Tab
@@ -107,4 +114,16 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+const mapPropsToState = state => {
+  console.log(state);
+  return {
+    isLoading: state.isLoading,
+    error: state.error,
+    data: state.data
+  };
+};
+
+export default connect(
+  mapPropsToState,
+  { getReceipts }
+)(Dashboard);
