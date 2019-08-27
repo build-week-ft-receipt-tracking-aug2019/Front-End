@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { Tab } from "semantic-ui-react";
-import { connect } from "react-redux";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";

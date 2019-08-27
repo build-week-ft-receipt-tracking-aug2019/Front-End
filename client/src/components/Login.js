@@ -4,6 +4,8 @@ import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import { connect } from 'react-redux';
+import {AddUsernameToState} from "../actions/addUsernameToState"
 import "semantic-ui-css/semantic.min.css";
 
 const Login = ({ errors, touched }) => {
