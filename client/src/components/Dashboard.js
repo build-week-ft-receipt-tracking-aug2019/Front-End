@@ -3,6 +3,7 @@ import { Tab } from "semantic-ui-react";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
+import { connect } from 'react-redux';
 
 const fakeData = [
   {
@@ -95,9 +96,10 @@ const panes = [
   }
 ];
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div>
+      <button onClick={() => console.log(props.state)}>state</button>
       <Tab
         style={{ backgroundColor: "#e6e8e6" }}
         panes={panes}
@@ -107,4 +109,12 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  state: state
+});
+
+export default connect(
+  mapStateToProps,
+)(Dashboard);
+
+// export default Dashboard;

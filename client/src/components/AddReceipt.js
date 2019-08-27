@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
+
 import { addNewReceipt } from '../actions/index';
 
 const formStyle = {

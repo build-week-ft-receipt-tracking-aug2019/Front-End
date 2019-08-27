@@ -3,17 +3,19 @@ import {
     FETCH_RECEIPTS_SUCCESS,
     ADD_RECEIPT_START,
     ADD_RECEIPT_SUCCESS,
+    ADD_USERNAME_TO_STATE,
     ERROR
 } from '../actions/index';
 
 const initialState = {
+    username: '',
     isLoading: false,
     error: '',
     data: []
 }
 
 export const receiptReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FETCH_RECEIPTS_START:
             return {
                 ...state,
@@ -36,6 +38,12 @@ export const receiptReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+            }
+        case ADD_USERNAME_TO_STATE:
+            return {
+                ...state,
+                isLoading: false,
+                username: action.payload
             }
         case ERROR:
             return {
