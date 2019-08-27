@@ -27,7 +27,7 @@ const errorStyle = {
 };
 
 // To do:
-// Will need to take in render props to push component back to receipt list upon completion
+// Need to structure
 
 const AddReceipt = ({ errors, touched }) => {
   const setFieldValue = event => {
@@ -120,6 +120,6 @@ const mapPropsToState = state => {
         error: state.error,
         data: state.data
     }
-}
+};
 
 export default connect(mapPropsToState, { addNewReceipt })(AddReceiptForm);
