@@ -1,17 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-import Axios from 'axios';
 
-const InitialData = {
-    id: 1,
-    receipt_merchant: 'Whole Foods',
-    receipt_date: '08/26/19',
-    receipt_category: 'Food',
-    receipt_img: '',
-    receipt_amount: '85.65',
-    user_id: 0
-}
+import { addNewReceipt } from '../actions/index';
 
 const formStyle = {
     display: 'flex',
@@ -35,8 +27,6 @@ const errorStyle = {
 }
 
 // To do:
-// Need to set up Redux store
-// Set up a add success dispatch to display success message
 // Will need to take in render props to push component back to receipt list upon completion
 
 const AddReceipt = ({ errors, touched }) => {
@@ -119,16 +109,21 @@ const AddReceiptForm = withFormik({
             .positive()
     }),
 
-    handleSubmit(values) {
+    handleSubmit(values, { props }) {
+        console.log(props)
         console.log(values);
-        // Will need to be an authorized axios request
-        Axios
-            // Will need to fill in endpoint below:
-            // https://receipt-tracker-api.herokuapp.com/receipt
-            .post('endpoint', values)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+        props.addNewReceipt(values);
+        // Will need to somehow props.history.push('/dashboard') upon success;
     }
 })(AddReceipt)
 
-export default AddReceiptForm;
+const mapPropsToState = state => {
+    console.log(state);
+    return {
+        isLoading: state.isLoading,
+        error: state.error,
+        data: state.data
+    }
+}
+
+export default connect(mapPropsToState, { addNewReceipt })(AddReceiptForm);
