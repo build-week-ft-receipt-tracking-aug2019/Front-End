@@ -3,8 +3,10 @@ import { withFormik, Form, Field } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup';
 import 'semantic-ui-css/semantic.min.css'
+import { AddUsernameToState } from '../actions/addUsernameToState'
+import { connect } from 'react-redux';
 
-const Login = ({ errors, touched }) => {
+const Login = ({ errors, touched, username }) => {
 
 
     return (
@@ -54,13 +56,12 @@ const FormikForm = withFormik({
         email: Yup.string().required(),
     }),
 
-    handleSubmit(values, {props}) {
+    handleSubmit(values, { props }) {
         axios
             .post('https://receipt-tracker-api.herokuapp.com/login', values)
             .then(res => {
-                console.log(values)
-                console.log(res.data)
                 localStorage.setItem('token', res.data.token);
+                props.AddUsernameToState(values.username)
                 props.history.push('/')
 
             })
@@ -71,4 +72,11 @@ const FormikForm = withFormik({
     }
 })(Login);
 
-export default FormikForm;
+const mapStateToProps = state => ({
+    state: state
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { AddUsernameToState }
+  )(FormikForm);

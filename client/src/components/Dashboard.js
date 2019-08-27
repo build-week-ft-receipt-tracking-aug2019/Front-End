@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
+import { connect } from 'react-redux';
 import { getReceipts } from "../actions";
+
 
 const fakeData = [
   {
@@ -99,9 +101,10 @@ const panes = [
 
 const Dashboard = props => {
   useEffect(() => {
-    props.getReceipts();
+    props.getReceipts(props);
     console.log('Dashboard mounted')
   }, [])
+
 
   return (
     <div>
@@ -117,6 +120,7 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
+    username: state.username,
     isLoading: state.isLoading,
     error: state.error,
     data: state.data
