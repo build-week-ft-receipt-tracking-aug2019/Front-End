@@ -53,3 +53,31 @@
   text-align: left;
   margin    : auto 0;
 }
+
+.formContainers {
+  width : 30%;
+  margin: 10em auto;
+}
+
+
+.custom-upload {
+  border : 2px solid #249633;
+  display: inline-block;
+  cursor : pointer;
+  padding: 1em;
+}
+
+.custom-upload p {
+  font-size: 1.2em;
+  margin   : auto 0;
+}
+
+.custom-upload p:hover {
+  margin: auto 0;
+  color : white;
+}
+
+.custom-upload:hover {
+  background-color: #32BF54;
+  color           : white;
+}
