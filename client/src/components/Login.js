@@ -1,3 +1,4 @@
+
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
@@ -47,6 +48,7 @@ const Login = ({ errors, touched }) => {
   );
 };
 
+
 const FormikForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
@@ -54,6 +56,7 @@ const FormikForm = withFormik({
       password: password || ""
     };
   },
+
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
@@ -75,4 +78,13 @@ const FormikForm = withFormik({
   }
 })(Login);
 
-export default FormikForm;
+
+const mapStateToProps = state => ({
+    state: state
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { AddUsernameToState }
+  )(FormikForm);
+
