@@ -20,6 +20,10 @@
   padding         : 1em;
 }
 
+.tabHeading h2 {
+  margin: auto 0;
+}
+
 .tabHeading .formModalButton {
   background-color: #e6e8e6;
   border          : 3px solid #249633;

@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import { Tab } from "semantic-ui-react";
-//modal imports
-import { Button, Header, Image, Modal } from "semantic-ui-react";
-import AddReceipt from "./AddReceipt";
+import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 
@@ -33,15 +31,7 @@ const panes = [
         <Fragment>
           <div className="tabHeading">
             <h2>Your Receipts</h2>
-            <Modal
-              trigger={<Button className="formModalButton">+</Button>}
-              centered={false}
-            >
-              <Modal.Header>Add Your Receipt Info</Modal.Header>
-              <Modal.Content>
-                <AddReceipt />
-              </Modal.Content>
-            </Modal>
+            <ModalAddReceipt />
           </div>
           {fakeData.map(data => {
             return (
@@ -64,15 +54,7 @@ const panes = [
         <Fragment>
           <div className="tabHeading">
             <h2>Your Receipts</h2>
-            <Modal
-              trigger={<Button className="formModalButton">+</Button>}
-              centered={false}
-            >
-              <Modal.Header>Add Your Receipt Info</Modal.Header>
-              <Modal.Content>
-                <AddReceipt />
-              </Modal.Content>
-            </Modal>
+            <ModalAddReceipt />
           </div>
           {fakeData.map(data => {
             return (
@@ -95,15 +77,7 @@ const panes = [
         <Fragment>
           <div className="tabHeading">
             <h2>Your Receipts</h2>
-            <Modal
-              trigger={<Button className="formModalButton">+</Button>}
-              centered={false}
-            >
-              <Modal.Header>Add Your Receipt Info</Modal.Header>
-              <Modal.Content>
-                <AddReceipt />
-              </Modal.Content>
-            </Modal>
+            <ModalAddReceipt />
           </div>
           {fakeData.map(data => {
             return (
