@@ -7,8 +7,8 @@ export const addNewReceipt = newReceipt => {
         dispatch({ type: ADD_RECEIPT_START })
         axiosWithAuth()
             // Will need to fill in endpoint below:
-            // https://receipt-tracker-api.herokuapp.com/receipt
-            .post('endpoint', newReceipt)
+            // https://receipt-tracker-api.herokuapp.com/users/receipt
+            .post('https://receipt-tracker-api.herokuapp.com/users/receipts', newReceipt)
             .then(res => {
                 console.log(res);
                 dispatch({ type: ADD_RECEIPT_SUCCESS });
