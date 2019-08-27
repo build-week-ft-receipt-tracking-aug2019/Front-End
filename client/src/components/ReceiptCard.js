@@ -15,30 +15,35 @@ display: flex;
 
 const ReceiptImage = styled.div`
 width: 55%;
+margin: 20px;
 
 `;
+
+
 
 export default function ReceiptCard() {
   return (
   
       <Item>
       <StyledReceiptItem>
-          <Content>
-        <Item.Content>
-           <Item.Header as="a">Receipt Category</Item.Header>
-           <Item.Meta>Receipt - Description</Item.Meta>
-           <Item.Description>
-           </Item.Description>
-           <Item.Extra>Amount Details</Item.Extra>
-        </Item.Content>
+        <Content>
+          <Item.Content>
+              <Item.Header as="a">Category: recep.category</Item.Header>
+              <Item.Meta>recep.merchant</Item.Meta>
+              <Item.Description>Amount: recep.amount_spent</Item.Description>
+              <Item.Extra> Date:recep.date</Item.Extra>
+          </Item.Content>
         </Content>
 
         <ReceiptImage>
-         Image Here
+         Image Here(recep.image)
         </ReceiptImage>
         </StyledReceiptItem>
+        <button>Edit</button>
+        <button>Delete</button>
       </Item>
    
     
   );
+
 }

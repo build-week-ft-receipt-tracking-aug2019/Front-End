@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react":
+import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import ReceiptCard from './ReceiptCard.js';
 
@@ -8,7 +8,7 @@ export default function ReceiptList(){
 
     useEffect(()=>{
         axios
-        .get("//axios")
+        .get("https://receipt-tracker-api.herokuapp.com/users/receipts")
         .then(res =>{
             console.log('receipt', res.data.results);
             setReceipt(res.data.results);
@@ -21,8 +21,8 @@ export default function ReceiptList(){
 
     return (
         <section className="receipt-view">
-        {receipt.map(recp =>{
-            return<ReceiptCard key={recp.id} recp={recp}/>
+        {receipt.map(recep =>{
+            return<ReceiptCard key={recep.id} recp={recep}/>
         })}
         </section>
 
