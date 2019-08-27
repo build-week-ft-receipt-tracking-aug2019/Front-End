@@ -53,13 +53,14 @@ const FormikForm = withFormik({
     password: Yup.string().required(),
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, {props}) {
     axios
-      .post('EndpointHere', values)
+      .post('https://receipt-tracker-api.herokuapp.com/register', values)
       .then(res => {
           console.log(values)
-          console.log(res.data)
-          localStorage.setItem('token', res.data.payload);
+          console.log(res)
+          props.history.push('/login')
+        //   localStorage.setItem('token', res.data.payload);
           
           })
       .catch(err => {

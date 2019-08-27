@@ -9,7 +9,7 @@ export const getReceipts = () => {
         dispatch({ type: FETCH_RECEIPTS_START })
         axiosWithAuth()
             // Will need an endpoint for a specific users receipts 
-            .get('https://receipt-tracker-api.herokuapp.com')
+            .get('https://receipt-tracker-api.herokuapp.com/user0/receipts')
             .then(res => {
                 console.log(res);
                 dispatch({ type: FETCH_RECEIPTS_SUCCESS })
