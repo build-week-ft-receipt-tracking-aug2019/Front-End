@@ -1,5 +1,5 @@
-import { axiosWithAuth } from '../utilities/axiosWithAuth';
-import { FETCH_RECEIPTS_START, FETCH_RECEIPTS_SUCCESS, ERROR } from './index';
+import { axiosWithAuth } from "../utilities/axiosWithAuth";
+import { FETCH_RECEIPTS_START, FETCH_RECEIPTS_SUCCESS, ERROR } from "./index";
 
 export const getReceipts = props => {
     console.log(props)
