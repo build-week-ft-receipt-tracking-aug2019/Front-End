@@ -117,7 +117,7 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
-    username: state.username,
+    user_username: state.user_username,
     isLoading: state.isLoading,
     error: state.error,
     data: state.data

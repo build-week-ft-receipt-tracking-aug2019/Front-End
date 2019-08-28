@@ -2,9 +2,12 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import { connect } from "react-redux";
+
+import {connect} from 'react-redux'
+
 import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { AddUsernameToState } from '../actions/addUsernameToState'
 
 const errorStyle = {
   fontSize: "1em",
@@ -66,13 +69,15 @@ const FormikForm = withFormik({
     password: Yup.string().required()
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, { props }) {
     axios
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
         console.log(res.data);
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem('token', res.data.token);
+        props.AddUsernameToState(values.username)
+        props.history.push('/')
       })
       .catch(err => {
         console.log(values);
