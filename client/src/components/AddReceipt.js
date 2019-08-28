@@ -28,8 +28,10 @@ const errorStyle = {
   color: "red"
 };
 
-// To do:
-// Need to structure
+// * README *:
+// As of 18:00 Tuesday getting 404 error on posting new receipt.
+// Believe issue is with the back-end api as the data passed into the action at line 111
+//  is exactly what the back-end README calls for.
 
 const AddReceipt = ({ errors, touched }) => {
   const setFieldValue = event => {
@@ -46,9 +48,9 @@ const AddReceipt = ({ errors, touched }) => {
           )}
         </SemForm.Field>
         <SemForm.Field>
-          <Field type="text" name="amount" placeholder="Enter amount" />
-          {touched.amount && errors.amount && (
-            <p style={errorStyle}>{errors.amount}</p>
+          <Field type="number" name="amount_spent" placeholder="Enter amount" />
+          {touched.amount_spent && errors.amount_spent && (
+            <p style={errorStyle}>{errors.amount_spent}</p>
           )}
         </SemForm.Field>
         <SemForm.Field>
@@ -99,13 +101,19 @@ const AddReceipt = ({ errors, touched }) => {
 };
 
 const AddReceiptForm = withFormik({
-  mapPropsToValues({ merchant, date, category, image, amount }) {
+  mapPropsToValues({ merchant, date, category, image, amount_spent }) {
     return {
       merchant: merchant || "",
       date: date || "",
       category: category || "",
+<<<<<<< HEAD
       image: image || "",
       amount: amount || ""
+=======
+      // image commented out until we confirm it has been added to back end
+      // image: image || "",
+      amount_spent: amount_spent || "",
+>>>>>>> bd4fd6012a6420b9e133b04e6496311fa58d26ce
     };
   },
 
@@ -114,11 +122,12 @@ const AddReceiptForm = withFormik({
     date: Yup.string().required("Date is required"),
     category: Yup.string().required("Please choose a category"),
     image: Yup.string().notRequired(),
-    amount: Yup.number()
-      .required("Amount is required")
+    amount_spent: Yup.number()
+      .required("Amount_spent is required")
       .positive()
   }),
 
+<<<<<<< HEAD
   handleSubmit(values, { props }) {
     // Had to deconstruct my values from formik to add the username from redux store to put in request
     const valuesWithUsername = { values };
@@ -138,6 +147,26 @@ const mapPropsToState = state => {
     error: state.error,
     data: state.data
   };
+=======
+    handleSubmit(values, { props }) {
+        // Had to deconstruct my values from formik to add the username from redux store to put in request
+        const valuesWithUsername = ({ values });
+        valuesWithUsername.values.user_username = props.user_username;
+        props.addNewReceipt(valuesWithUsername.values);
+        // Will need to push to dashboard once back-end is finalized. See below:
+        // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
+    }
+})(AddReceipt)
+
+const mapPropsToState = state => {
+    console.log(state);
+    return {
+        user_username: state.user_username,
+        isLoading: state.isLoading,
+        error: state.error,
+        data: state.data
+    }
+>>>>>>> bd4fd6012a6420b9e133b04e6496311fa58d26ce
 };
 export default connect(
   mapPropsToState,
