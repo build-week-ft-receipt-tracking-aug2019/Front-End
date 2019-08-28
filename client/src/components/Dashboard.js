@@ -4,9 +4,9 @@ import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { getReceipts } from "../actions/getReceipts";
-import {deleteReceipt} from "../actions/deleteReceipt"
-import { connect } from 'react-redux';
-import Search from './Search'
+import { deleteReceipt } from "../actions/deleteReceipt";
+import { connect } from "react-redux";
+import Search from "./Search";
 
 // const fakeData = [
 //   {
@@ -27,25 +27,22 @@ import Search from './Search'
 //   }
 // ];
 
-
 const Dashboard = props => {
-
-  const [isSearching, setIsSearching] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
-  const [counter, setCounter] = useState(false)
-
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [counter, setCounter] = useState(false);
 
   const searchClickHandler = () => {
-    setIsSearching(!isSearching)
-  }
+    setIsSearching(!isSearching);
+  };
 
   const displayState = () => {
-    console.log(isSearching)
-    console.log(searchResults)
-    console.log(props.data)
-  }
+    console.log(isSearching);
+    console.log(searchResults);
+    console.log(props.data);
+  };
 
-  console.log('FROM THE DASH-', props.data)
+  console.log("FROM THE DASH-", props.data);
   const panes = [
     {
       menuItem: "Recent",
@@ -53,12 +50,27 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
-              {!isSearching && <ModalAddReceipt setCounter={setCounter} counter={counter}/>}
+              {isSearching === false ? (
+                <>
+                  <h2>Your Receipts</h2>
+                  <h2 className="searchButton" onClick={searchClickHandler}>
+                    Search
+                  </h2>
+                </>
+              ) : (
+                <Search
+                  allData={props.data}
+                  isSearching={isSearching}
+                  setIsSearching={setIsSearching}
+                  setSearchResults={setSearchResults}
+                />
+              )}
+              {!isSearching && (
+                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+              )}
             </div>
-            {
-              isSearching === false ?
-                props.data.map(data => {
+            {isSearching === false
+              ? props.data.map(data => {
                   return (
                     <TabContent
                       merchant={data.merchant}
@@ -66,12 +78,12 @@ const Dashboard = props => {
                       total={data.amount_spent}
                       id={data.id}
                       deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
-                />
+                    />
                   );
                 })
-                : searchResults.map(data => {
+              : searchResults.map(data => {
                   return (
                     <TabContent
                       merchant={data.merchant}
@@ -79,12 +91,11 @@ const Dashboard = props => {
                       total={data.amount_spent}
                       id={data.id}
                       deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
-                />
+                    />
                   );
-                })
-            }
+                })}
 
             <Spent time={"month"} />
           </Fragment>
@@ -97,37 +108,50 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
-              {!isSearching && <ModalAddReceipt setCounter={setCounter} counter={counter}/>}
+              {isSearching === false ? (
+                <>
+                  <h2>Your Receipts</h2>
+                  <h2 className="searchButton" onClick={searchClickHandler}>
+                    Search
+                  </h2>
+                </>
+              ) : (
+                <Search
+                  allData={props.data}
+                  isSearching={isSearching}
+                  setIsSearching={setIsSearching}
+                  setSearchResults={setSearchResults}
+                />
+              )}
+              {!isSearching && (
+                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+              )}
             </div>
-            {
-              isSearching === false ?
-                props.data.map(data => {
+            {isSearching === false
+              ? props.data.map(data => {
                   return (
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
                       total={data.amount_spent}
                       id={data.id}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
                     />
                   );
                 })
-                :
-                searchResults.map(data => {
+              : searchResults.map(data => {
                   return (
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
                       total={data.amount_spent}
                       id={data.id}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
                     />
                   );
-                })
-            }
+                })}
             <Spent time={"3 months"} />
           </Fragment>
         )
@@ -139,12 +163,27 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
-              {!isSearching && <ModalAddReceipt setCounter={setCounter} counter={counter}/>}
+              {isSearching === false ? (
+                <>
+                  <h2>Your Receipts</h2>
+                  <h2 className="searchButton" onClick={searchClickHandler}>
+                    Search
+                  </h2>
+                </>
+              ) : (
+                <Search
+                  allData={props.data}
+                  isSearching={isSearching}
+                  setIsSearching={setIsSearching}
+                  setSearchResults={setSearchResults}
+                />
+              )}
+              {!isSearching && (
+                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+              )}
             </div>
-            {
-              isSearching === false ?
-                props.data.map(data => {
+            {isSearching === false
+              ? props.data.map(data => {
                   return (
                     <TabContent
                       merchant={data.merchant}
@@ -152,26 +191,24 @@ const Dashboard = props => {
                       total={data.amount_spent}
                       id={data.id}
                       deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
-                />
+                    />
                   );
                 })
-                :
-                searchResults.map(data => {
+              : searchResults.map(data => {
                   return (
-                   <TabContent
+                    <TabContent
                       merchant={data.merchant}
                       date={data.date}
                       total={data.amount_spent}
                       id={data.id}
                       deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter} 
+                      setCounter={setCounter}
                       counter={counter}
-                />
+                    />
                   );
-                })
-            }
+                })}
             <Spent time={"year"} />
           </Fragment>
         )
@@ -207,7 +244,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { getReceipts: getReceipts,
-    deleteReceipt: deleteReceipt
-  }
+  { getReceipts: getReceipts, deleteReceipt: deleteReceipt }
 )(Dashboard);

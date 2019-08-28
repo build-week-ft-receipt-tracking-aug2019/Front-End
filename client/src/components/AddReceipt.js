@@ -108,7 +108,7 @@ const AddReceiptForm = withFormik({
       category: category || "",
       // image commented out until we confirm it has been added to back end
       // image: image || "",
-      amount_spent: amount_spent || "",
+      amount_spent: amount_spent || ""
     };
   },
 
@@ -122,26 +122,25 @@ const AddReceiptForm = withFormik({
       .positive()
   }),
 
-
-    handleSubmit(values, { props }) {
-        // Had to deconstruct my values from formik to add the username from redux store to put in request
-        const valuesWithUsername = ({ values });
-        valuesWithUsername.values.user_username = props.user_username;
-        props.addNewReceipt(valuesWithUsername.values);
-        props.setCounter(!props.counter)
-        // Will need to push to dashboard once back-end is finalized. See below:
-        // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
-    }
-})(AddReceipt)
+  handleSubmit(values, { props }) {
+    // Had to deconstruct my values from formik to add the username from redux store to put in request
+    const valuesWithUsername = { values };
+    valuesWithUsername.values.user_username = props.user_username;
+    props.addNewReceipt(valuesWithUsername.values);
+    props.setCounter(!props.counter);
+    // Will need to push to dashboard once back-end is finalized. See below:
+    // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
+  }
+})(AddReceipt);
 
 const mapPropsToState = state => {
-    console.log(state);
-    return {
-        user_username: state.user_username,
-        isLoading: state.isLoading,
-        error: state.error,
-        data: state.data
-    }
+  console.log(state);
+  return {
+    user_username: state.user_username,
+    isLoading: state.isLoading,
+    error: state.error,
+    data: state.data
+  };
 };
 export default connect(
   mapPropsToState,
