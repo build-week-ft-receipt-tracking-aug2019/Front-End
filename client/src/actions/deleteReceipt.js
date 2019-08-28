@@ -1,20 +1,40 @@
 import { axiosWithAuth } from '../utilities/axiosWithAuth';
+import axios from 'axios';
 import {DELETE_RECEIPT_SUCCESS, ERROR} from './index';
 import {getReceipts} from './getReceipts';
 
-export const deleteReceipt = id => {
-    console.log(id)
-    return dispatch => {
-        axiosWithAuth()
-            .delete(`https://receipt-tracker-api.herokuapp.com/users/receipt/${id}`)
+export const deleteReceipt = id => dispatch => {
+        console.log('does this log?');
+        axios
+            .delete(`https://receipt-tracker-api.herokuapp.com/users/receipt/${id}`, {
+                headers: {authorization: localStorage.getItem('token')}
+            })
             .then(res => {
-                console.log(res);
-                getReceipts();
-                dispatch({ type: DELETE_RECEIPT_SUCCESS, payload: res });
+                console.log("delete response===",res);
+                dispatch({ type: DELETE_RECEIPT_SUCCESS });
             })
             .catch(err => {
                 console.log(err);
                 dispatch({ type: ERROR });
             })
     }
-};
+
+
+
+
+    // return dispatch => {
+    //     console.log('does this log?');
+    //     //axiosWithAuth()
+    //     axios
+    //         .delete(`https://receipt-tracker-api.herokuapp.com/users/receipt/${id}`, {
+    //             headers: {authorization: localStorage.getItem('token')}
+    //         })
+    //         .then(res => {
+    //             console.log("delete response===",res);
+    //             dispatch({ type: DELETE_RECEIPT_SUCCESS });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //             dispatch({ type: ERROR });
+    //         })
+    // }

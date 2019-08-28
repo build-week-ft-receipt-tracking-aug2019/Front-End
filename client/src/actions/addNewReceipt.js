@@ -5,6 +5,7 @@ export const addNewReceipt = newReceipt => {
     console.log(newReceipt)
     return dispatch => {
         dispatch({ type: ADD_RECEIPT_START })
+        console.log('DATA SHAPE BEFORE POST-----', newReceipt)
         axiosWithAuth()
             // Enpoint below is accurate as of 18:00 on back-end README but 
             // I receive a 404 error when adding. See notes on addReceipt.js line: 30
