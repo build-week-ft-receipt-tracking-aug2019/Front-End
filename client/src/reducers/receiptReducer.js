@@ -4,6 +4,7 @@ import {
     ADD_RECEIPT_START,
     ADD_RECEIPT_SUCCESS,
     ADD_USERNAME_TO_STATE,
+    DELETE_RECEIPT_SUCCESS,
     ERROR
 } from '../actions/index';
 
@@ -38,13 +39,17 @@ export const receiptReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-            }
+            };
         case ADD_USERNAME_TO_STATE:
             return {
                 ...state,
                 isLoading: false,
                 user_username: action.payload
-            }
+            };
+        case DELETE_RECEIPT_SUCCESS:
+            return {
+                ...state,
+            };
         case ERROR:
             return {
                 ...state,

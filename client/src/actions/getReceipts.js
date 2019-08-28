@@ -8,7 +8,7 @@ export const getReceipts = props => {
         axiosWithAuth()
             .get('https://receipt-tracker-api.herokuapp.com/users/receipts')
             .then(res => {
-                console.log(res);
+                console.log('FETCH RECEIPTS RESULTS-----',res);
                 dispatch({ type: FETCH_RECEIPTS_SUCCESS, payload: res.data })
             })
             .catch(err => {

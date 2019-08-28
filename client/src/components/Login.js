@@ -2,12 +2,11 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import { connect } from 'react-redux';
+import {AddUsernameToState} from "../actions/addUsernameToState"
 
-import {connect} from 'react-redux'
-
-import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { AddUsernameToState } from '../actions/addUsernameToState'
 
 const errorStyle = {
   fontSize: "1em",
