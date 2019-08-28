@@ -2,10 +2,11 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { Button, Form as SemForm } from "semantic-ui-react";
+import { addUsernameToState } from "../actions/addUsernameToState";
+
 import "semantic-ui-css/semantic.min.css";
-import { AddUsernameToState } from "../actions/addUsernameToState";
 
 const errorStyle = {
   fontSize: "1em",
@@ -71,16 +72,16 @@ const FormikForm = withFormik({
     axios
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
-        console.log("VALUES:", values);
-        console.log("DATA:", res.data);
+        console.log(values);
+        console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        console.log("HELP!!!!:", props);
-        // formikBag.props.AddUsernameToState(values.username);
+        props.addUsernameToState(values.username);
         props.history.push("/");
       })
       .catch(err => {
-        console.log("VAL ERRS:", values);
-        console.log("RES ERRS:", err.response);
+        console.log(values);
+        console.log(err.response);
+        props.history.push("/");
       });
   }
 })(Login);
@@ -91,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { AddUsernameToState }
+  { addUsernameToState }
 )(FormikForm);

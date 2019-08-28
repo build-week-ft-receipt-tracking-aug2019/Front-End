@@ -3,7 +3,7 @@ import AddReceipt from "./AddReceipt";
 //modal imports
 import { Button, Modal } from "semantic-ui-react";
 
-const ModalAddReceipt = () => {
+const ModalAddReceipt = (props) => {
   return (
     <Modal
       trigger={<Button className="formModalButton">+</Button>}
@@ -11,7 +11,7 @@ const ModalAddReceipt = () => {
     >
       <Modal.Header>Add Your Receipt Info</Modal.Header>
       <Modal.Content>
-        <AddReceipt />
+        <AddReceipt setCounter={props.setCounter} counter={props.counter}/>
       </Modal.Content>
     </Modal>
   );

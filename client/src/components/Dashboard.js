@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Tab } from "semantic-ui-react";
-import { connect } from "react-redux";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
-import { getReceipts } from "../actions";
+import { getReceipts } from "../actions/getReceipts";
+import { deleteReceipt } from "../actions/deleteReceipt";
+import { connect } from "react-redux";
 
 // const fakeData = [
 //   {
@@ -26,6 +27,9 @@ import { getReceipts } from "../actions";
 // ];
 
 const Dashboard = props => {
+  const [counter, setCounter] = useState(false);
+
+  console.log("FROM THE DASH-", props.data);
   const panes = [
     {
       menuItem: "Recent",
@@ -34,17 +38,22 @@ const Dashboard = props => {
           <Fragment>
             <div className="tabHeading">
               <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              <ModalAddReceipt setCounter={setCounter} counter={counter} />
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={`$${data.amount_spent}`}
-                />
-              );
-            })}
+            {props.data &&
+              props.data.map(data => {
+                return (
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter}
+                    counter={counter}
+                  />
+                );
+              })}
             <Spent time={"month"} />
           </Fragment>
         )
@@ -57,17 +66,22 @@ const Dashboard = props => {
           <Fragment>
             <div className="tabHeading">
               <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              <ModalAddReceipt setCounter={setCounter} counter={counter} />
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={`$${data.amount_spent}`}
-                />
-              );
-            })}
+            {props.data &&
+              props.data.map(data => {
+                return (
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter}
+                    counter={counter}
+                  />
+                );
+              })}
             <Spent time={"3 months"} />
           </Fragment>
         )
@@ -80,17 +94,22 @@ const Dashboard = props => {
           <Fragment>
             <div className="tabHeading">
               <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              <ModalAddReceipt setCounter={setCounter} counter={counter} />
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={`$${data.amount_spent}`}
-                />
-              );
-            })}
+            {props.data &&
+              props.data.map(data => {
+                return (
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter}
+                    counter={counter}
+                  />
+                );
+              })}
             <Spent time={"year"} />
           </Fragment>
         )
@@ -100,8 +119,8 @@ const Dashboard = props => {
 
   useEffect(() => {
     props.getReceipts(props);
-    console.log("Dashboard mounted");
-  }, []);
+    console.log("Dashboard mounted", props);
+  }, [counter]);
 
   return (
     <div>
@@ -126,5 +145,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { getReceipts }
+  { getReceipts: getReceipts, deleteReceipt: deleteReceipt }
 )(Dashboard);
