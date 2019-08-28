@@ -3,7 +3,8 @@ import { Tab } from "semantic-ui-react";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
-import { getReceipts } from "../actions";
+import { getReceipts } from "../actions/getReceipts";
+import {deleteReceipt} from "../actions/deleteReceipt"
 import { connect } from 'react-redux';
 
 // const fakeData = [
@@ -46,6 +47,7 @@ const Dashboard = props => {
                   date={data.date}
                   total={data.amount_spent}
                   id={data.id}
+                  deleteReceipt={props.deleteReceipt}
                 />
               );
             })}
@@ -70,6 +72,7 @@ const Dashboard = props => {
                   date={data.date}
                   total={data.amount_spent}
                   id={data.id}
+                  deleteReceipt={props.deleteReceipt}
                 />
               );
             })}
@@ -94,6 +97,7 @@ const Dashboard = props => {
                   date={data.date}
                   total={data.amount_spent}
                   id={data.id}
+                  deleteReceipt={props.deleteReceipt}
                 />
               );
             })}
@@ -133,6 +137,6 @@ const mapPropsToState = state => {
 export default connect(
   mapPropsToState,
   { getReceipts: getReceipts,
-    
+    deleteReceipt: deleteReceipt
   }
 )(Dashboard);

@@ -4,7 +4,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import { connect } from 'react-redux';
-import {AddUsernameToState} from "../actions/addUsernameToState"
+import {addUsernameToState} from "../actions/addUsernameToState"
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -75,12 +75,13 @@ const FormikForm = withFormik({
         console.log(values);
         console.log(res.data);
         localStorage.setItem('token', res.data.token);
-        props.AddUsernameToState(values.username)
+        props.addUsernameToState(values.username)
         props.history.push('/')
       })
       .catch(err => {
         console.log(values);
         console.log(err.response);
+        props.history.push('/')
       });
   }
 })(Login);
@@ -90,6 +91,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps
-  //   { AddUsernameToState }
+  mapStateToProps,
+    { addUsernameToState }
 )(FormikForm);
