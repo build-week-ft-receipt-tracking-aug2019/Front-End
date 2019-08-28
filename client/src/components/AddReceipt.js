@@ -7,7 +7,6 @@ import "semantic-ui-css/semantic.min.css";
 
 import { addNewReceipt } from "../actions/index";
 
-
 // const formStyle = {
 //   display: "flex",
 //   flexDirection: "column",
@@ -25,7 +24,7 @@ import { addNewReceipt } from "../actions/index";
 // };
 
 const errorStyle = {
-  fontSize: ".5em",
+  fontSize: "1em",
   color: "red"
 };
 
@@ -123,6 +122,7 @@ const AddReceiptForm = withFormik({
       .positive()
   }),
 
+
     handleSubmit(values, { props }) {
         // Had to deconstruct my values from formik to add the username from redux store to put in request
         const valuesWithUsername = ({ values });
@@ -142,7 +142,6 @@ const mapPropsToState = state => {
         data: state.data
     }
 };
-
 export default connect(
   mapPropsToState,
   { addNewReceipt }

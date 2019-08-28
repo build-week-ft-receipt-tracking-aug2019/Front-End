@@ -6,7 +6,6 @@ import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { getReceipts } from "../actions";
 
-
 const fakeData = [
   {
     id: 1,
@@ -100,11 +99,9 @@ const panes = [
 
 const Dashboard = props => {
   useEffect(() => {
-
-
     props.getReceipts(props);
-    console.log('Dashboard mounted')
-  }, [])
+    console.log("Dashboard mounted");
+  }, []);
 
   return (
     <div>

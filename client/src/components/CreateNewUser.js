@@ -29,7 +29,7 @@ const Login = ({ errors, touched }) => {
             placeholder="email"
           />
           {touched.email && errors.email && (
-            <p className="error">{errors.email}</p>
+            <p className="errorStyle">{errors.email}</p>
           )}
         </SemForm.Field>
         <SemForm.Field>
