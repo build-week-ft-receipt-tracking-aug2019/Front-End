@@ -1,9 +1,11 @@
 export { getReceipts } from './getReceipts';
 export { addNewReceipt } from './addNewReceipt';
+export { deleteReceipt } from './deleteReceipt';
 
 export const FETCH_RECEIPTS_START = 'FETCH_RECEIPTS_START';
 export const FETCH_RECEIPTS_SUCCESS = 'FETCH_RECEIPTS_SUCCESS';
 export const ADD_RECEIPT_START = 'ADD_RECEIPT_START';
 export const ADD_RECEIPT_SUCCESS = 'ADD_RECEIPT_SUCCESS';
 export const ADD_USERNAME_TO_STATE = 'ADD_USERNAME_TO_STATE';
+export const DELETE_RECEIPT_SUCCESS= 'DELETE_RECEIPT_START';
 export const ERROR = 'ERROR';

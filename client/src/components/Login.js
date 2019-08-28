@@ -7,7 +7,6 @@ import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import {AddUsernameToState} from "../actions/addUsernameToState"
 import "semantic-ui-css/semantic.min.css";
-import { AddUsernameToState } from '../actions/addUsernameToState'
 
 const Login = ({ errors, touched }) => {
   return (
