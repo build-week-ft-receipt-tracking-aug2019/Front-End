@@ -103,10 +103,11 @@ const Dashboard = props => {
       }
     }
   ];
+
   useEffect(() => {
     props.getReceipts(props);
-    console.log('Dashboard mounted')
-  }, [])
+    console.log("Dashboard mounted");
+  }, []);
 
   return (
     <div>
