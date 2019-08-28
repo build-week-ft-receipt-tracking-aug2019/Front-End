@@ -2,14 +2,10 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-<<<<<<< HEAD
 import { connect } from "react-redux";
-=======
-import {connect} from 'react-redux'
->>>>>>> bd4fd6012a6420b9e133b04e6496311fa58d26ce
 import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { AddUsernameToState } from '../actions/addUsernameToState'
+import { AddUsernameToState } from "../actions/addUsernameToState";
 
 const errorStyle = {
   fontSize: "1em",
@@ -77,9 +73,9 @@ const FormikForm = withFormik({
       .then(res => {
         console.log(values);
         console.log(res.data);
-        localStorage.setItem('token', res.data.token);
-        props.AddUsernameToState(values.username)
-        props.history.push('/')
+        localStorage.setItem("token", res.data.token);
+        props.AddUsernameToState(values.username);
+        props.history.push("/");
       })
       .catch(err => {
         console.log(values);
