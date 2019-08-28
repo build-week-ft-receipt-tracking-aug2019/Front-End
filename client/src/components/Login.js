@@ -1,10 +1,15 @@
-
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+
+const errorStyle = {
+  fontSize: "1em",
+  color: "red"
+};
 
 const Login = ({ errors, touched }) => {
   return (
@@ -19,7 +24,7 @@ const Login = ({ errors, touched }) => {
             placeholder="username"
           />
           {touched.username && errors.username && (
-            <p className="error">{errors.username}</p>
+            <p style={errorStyle}>{errors.username}</p>
           )}
         </SemForm.Field>
         <SemForm.Field>
@@ -48,7 +53,6 @@ const Login = ({ errors, touched }) => {
   );
 };
 
-
 const FormikForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
@@ -56,7 +60,6 @@ const FormikForm = withFormik({
       password: password || ""
     };
   },
-
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
@@ -78,13 +81,11 @@ const FormikForm = withFormik({
   }
 })(Login);
 
-
 const mapStateToProps = state => ({
-    state: state
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { AddUsernameToState }
-  )(FormikForm);
+  state: state
+});
 
+export default connect(
+  mapStateToProps
+  //   { AddUsernameToState }
+)(FormikForm);
