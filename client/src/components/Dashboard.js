@@ -33,9 +33,9 @@ const Dashboard = props => {
 
   const searchClickHandler = () => {
     setIsSearching(!isSearching)
-}
+  }
 
-  const displayState =() => {
+  const displayState = () => {
     console.log(isSearching)
     console.log(searchResults)
     console.log(props.data)
@@ -86,19 +86,33 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
+              {!isSearching && <ModalAddReceipt />}
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                />
-              );
-            })}
+            {
+              isSearching === false ?
+                props.data.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+                :
+                searchResults.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+            }
             <Spent time={"3 months"} />
           </Fragment>
         )
@@ -110,19 +124,33 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
+              {!isSearching && <ModalAddReceipt />}
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                />
-              );
-            })}
+            {
+              isSearching === false ?
+                props.data.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+                :
+                searchResults.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+            }
             <Spent time={"year"} />
           </Fragment>
         )
@@ -137,7 +165,6 @@ const Dashboard = props => {
 
   return (
     <div>
-      <button onClick={displayState}>state</button>
       <Tab
         style={{ backgroundColor: "#e6e8e6" }}
         panes={panes}
