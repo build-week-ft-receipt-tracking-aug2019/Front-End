@@ -6,6 +6,7 @@ import Spent from "./Spent";
 import { getReceipts } from "../actions/getReceipts";
 import {deleteReceipt} from "../actions/deleteReceipt"
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 // const fakeData = [
 //   {
@@ -43,15 +44,17 @@ const Dashboard = props => {
             </div>
             {props.data && props.data.map(data => {
               return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                  deleteReceipt={props.deleteReceipt}
-                  setCounter={setCounter} 
-                  counter={counter}
-                />
+                <Link to={`/receipt/${data.id}`}>
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter} 
+                    counter={counter}
+                  />
+                </Link>
               );
             })}
             <Spent time={"month"} />
@@ -69,16 +72,18 @@ const Dashboard = props => {
               <ModalAddReceipt setCounter={setCounter} counter={counter}/>
             </div>
             {props.data && props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                  deleteReceipt={props.deleteReceipt}
-                  setCounter={setCounter} 
-                  counter={counter}
-                />
+              return (                
+                <Link to={`/receipt/${data.id}`}>
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter} 
+                    counter={counter}
+                  />
+                </Link>
               );
             })}
             <Spent time={"3 months"} />
@@ -97,15 +102,18 @@ const Dashboard = props => {
             </div>
             {props.data && props.data.map(data => {
               return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                  deleteReceipt={props.deleteReceipt}
-                  setCounter={setCounter} 
-                  counter={counter}
-                />
+                
+                <Link to={`/receipt/${data.id}`}>
+                  <TabContent
+                    merchant={data.merchant}
+                    date={data.date}
+                    total={data.amount_spent}
+                    id={data.id}
+                    deleteReceipt={props.deleteReceipt}
+                    setCounter={setCounter} 
+                    counter={counter}
+                  />
+                </Link>
               );
             })}
             <Spent time={"year"} />
