@@ -10,7 +10,7 @@ export const deleteReceipt = id => {
             .then(res => {
                 console.log(res);
                 getReceipts();
-                dispatch({ type: DELETE_RECEIPT_SUCCESS });
+                dispatch({ type: DELETE_RECEIPT_SUCCESS, payload: res });
             })
             .catch(err => {
                 console.log(err);
