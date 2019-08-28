@@ -19,6 +19,7 @@ function App() {
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
       <Route path="/receipt" component={ReceiptList}/>
+      <Route path="/receipt/:id" component={Dashboard}/>
     </div>
   );
 }
