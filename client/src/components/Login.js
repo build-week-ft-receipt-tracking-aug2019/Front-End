@@ -7,6 +7,7 @@ import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import {AddUsernameToState} from "../actions/addUsernameToState"
 import "semantic-ui-css/semantic.min.css";
+import { AddUsernameToState } from '../actions/addUsernameToState'
 
 const Login = ({ errors, touched }) => {
   return (
@@ -65,13 +66,15 @@ const FormikForm = withFormik({
     password: Yup.string().required()
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, { props }) {
     axios
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
         console.log(res.data);
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem('token', res.data.token);
+        props.AddUsernameToState(values.username)
+        props.history.push('/')
       })
       .catch(err => {
         console.log(values);
