@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Tab } from "semantic-ui-react";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { getReceipts } from "../actions";
 import { connect } from 'react-redux';
+import Search from './Search'
 
 // const fakeData = [
 //   {
@@ -27,8 +28,20 @@ import { connect } from 'react-redux';
 
 
 const Dashboard = props => {
+  const [isSearching, setIsSearching] = useState(false)
+  const [searchResults, setSearchResults] = useState([])
 
-  console.log('FROM THE DASH-',props.data)
+  const searchClickHandler = () => {
+    setIsSearching(!isSearching)
+}
+
+  const displayState =() => {
+    console.log(isSearching)
+    console.log(searchResults)
+    console.log(props.data)
+  }
+
+  console.log('FROM THE DASH-', props.data)
   const panes = [
     {
       menuItem: "Recent",
@@ -36,19 +49,32 @@ const Dashboard = props => {
         content: (
           <Fragment>
             <div className="tabHeading">
-              <h2>Your Receipts</h2>
-              <ModalAddReceipt />
+              {isSearching === false ? <><h2>Your Receipts</h2><h2 onClick={searchClickHandler}>s</h2></> : <Search allData={props.data} isSearching={isSearching} setIsSearching={setIsSearching} setSearchResults={setSearchResults} />}
+              {!isSearching && <ModalAddReceipt />}
             </div>
-            {props.data.map(data => {
-              return (
-                <TabContent
-                  merchant={data.merchant}
-                  date={data.date}
-                  total={data.amount_spent}
-                  id={data.id}
-                />
-              );
-            })}
+            {
+              isSearching === false ?
+                props.data.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+                : searchResults.map(data => {
+                  return (
+                    <TabContent
+                      merchant={data.merchant}
+                      date={data.date}
+                      total={data.amount_spent}
+                      id={data.id}
+                    />
+                  );
+                })
+            }
             <Spent time={"month"} />
           </Fragment>
         )
@@ -111,6 +137,7 @@ const Dashboard = props => {
 
   return (
     <div>
+      <button onClick={displayState}>state</button>
       <Tab
         style={{ backgroundColor: "#e6e8e6" }}
         panes={panes}
@@ -132,7 +159,8 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { getReceipts: getReceipts,
-    
+  {
+    getReceipts: getReceipts,
+
   }
 )(Dashboard);
