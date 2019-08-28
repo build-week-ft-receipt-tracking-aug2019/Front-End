@@ -12,7 +12,12 @@ const TabContent = (props) => {
         </div>
         <div className="totalCol">
           <div className="editCard">Edit</div>
-          <div className="deleteCard" onClick={()=> props.deleteReceipt(id)}>X</div>
+          <div 
+            className="deleteCard" 
+            onClick={()=> {
+              props.deleteReceipt(id);
+              props.setCounter(!props.counter)}}
+          >X</div>
           <h3>Total: {total}</h3>
         </div>
       </div>
