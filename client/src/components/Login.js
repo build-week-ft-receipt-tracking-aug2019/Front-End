@@ -73,7 +73,7 @@ const FormikForm = withFormik({
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
-        console.log(res.data);
+        console.log(res);
         localStorage.setItem('token', res.data.token);
         props.addUsernameToState(values.username)
         props.history.push('/')
@@ -82,6 +82,7 @@ const FormikForm = withFormik({
         console.log(values);
         console.log(err.response);
         props.history.push('/')
+
       });
   }
 })(Login);
