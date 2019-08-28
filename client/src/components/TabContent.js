@@ -1,8 +1,8 @@
 import React from "react";
-import { deleteReceipt } from '../actions/deleteReceipt'
 import '../App.css'
 
-const TabContent = ({ merchant, date, total, id }) => {
+const TabContent = (props) => {
+  const { merchant, date, total, id } = props; 
   return (
     <div className="tab">
       <div className="tabContent">
@@ -12,7 +12,12 @@ const TabContent = ({ merchant, date, total, id }) => {
         </div>
         <div className="totalCol">
           <div className="editCard">Edit</div>
-          <div className="deleteCard" onClick={()=>deleteReceipt(id)}>X</div>
+          <div 
+            className="deleteCard" 
+            onClick={()=> {
+              props.deleteReceipt(id);
+              props.setCounter(!props.counter)}}
+          >X</div>
           <h3>Total: {total}</h3>
         </div>
       </div>

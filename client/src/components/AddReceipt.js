@@ -128,6 +128,7 @@ const AddReceiptForm = withFormik({
         const valuesWithUsername = ({ values });
         valuesWithUsername.values.user_username = props.user_username;
         props.addNewReceipt(valuesWithUsername.values);
+        props.setCounter(!props.counter)
         // Will need to push to dashboard once back-end is finalized. See below:
         // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
     }

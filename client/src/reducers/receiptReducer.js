@@ -41,6 +41,7 @@ export const receiptReducer = (state = initialState, action) => {
                 isLoading: false,
             };
         case ADD_USERNAME_TO_STATE:
+            console.log("USERNAME PAYLOAD", action.payload)
             return {
                 ...state,
                 isLoading: false,
