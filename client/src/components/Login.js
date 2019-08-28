@@ -73,27 +73,15 @@ const FormikForm = withFormik({
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
-<<<<<<< HEAD
-        console.log(res.data);
+        console.log(res);
         localStorage.setItem("token", res.data.token);
         props.addUsernameToState(values.username);
         props.history.push("/");
-=======
-        console.log(res);
-        localStorage.setItem('token', res.data.token);
-        props.addUsernameToState(values.username)
-        props.history.push('/')
->>>>>>> 95e2136badfa5b2510ffba17866bbf36f5413d06
       })
       .catch(err => {
         console.log(values);
         console.log(err.response);
-<<<<<<< HEAD
         props.history.push("/");
-=======
-        props.history.push('/')
-
->>>>>>> 95e2136badfa5b2510ffba17866bbf36f5413d06
       });
   }
 })(Login);
