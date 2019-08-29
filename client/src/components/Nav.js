@@ -12,6 +12,8 @@ class Nav extends Component {
   };
   signOut = () => {
     localStorage.removeItem('token');
+    window.location.reload();
+
   }
   render() {
     const { activeItem } = this.state;
