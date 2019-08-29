@@ -20,7 +20,8 @@ const TabContent = (props) => {
           <div className="editCard">Edit</div>
           <div 
             className="deleteCard" 
-            onClick={()=> {
+            onClick={(event)=> {
+              event.stopPropagation(); 
               props.deleteReceipt(id);
               props.setCounter(!props.counter)}}
           >X</div>
