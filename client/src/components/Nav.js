@@ -62,7 +62,6 @@ class Nav extends Component {
             className="ReceiptLogo"
             src="https://files.slack.com/files-pri/T4JUEB3ME-FMQ7Z2Z60/image.png"
             alt="logo"
-            className="logoBoi"
           />
         </NavLink>
       </>
