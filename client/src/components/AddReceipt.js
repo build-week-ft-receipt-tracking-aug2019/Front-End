@@ -46,7 +46,7 @@ const AddReceiptForm = props => {
 
   // Will need to push to `users/receipts/${pros.rec_id}`
   // Note the useEffect on the Dashboard.js to 
-  props.pic_success === true && props.history.push('/');
+  props.pic_success && props.history.push('/');
 
   return (
     <div>
