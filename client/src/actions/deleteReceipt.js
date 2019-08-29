@@ -8,7 +8,7 @@ export const deleteReceipt = id => dispatch => {
             .delete(`https://receipt-tracker-api.herokuapp.com/users/receipt/${id}`)
             .then(res => {
                 console.log("delete response===",res);
-                dispatch({ type: DELETE_RECEIPT_SUCCESS, payload:id });
+                dispatch({ type: DELETE_RECEIPT_SUCCESS, payload: id });
             })
             .catch(err => {
                 console.log(err);
