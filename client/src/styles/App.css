@@ -55,7 +55,7 @@
 }
 
 .formContainers {
-  width : 30%;
+  width : 80%;
   margin: 10em auto;
 }
 
@@ -80,4 +80,16 @@
 .custom-upload:hover {
   background-color: #32BF54;
   color           : white;
+}
+
+.searchButton {
+  cursor       : pointer;
+  border       : 3px solid #249633;
+  border-radius: 5px;
+  padding      : 0.2em;
+}
+
+.searchButton:hover {
+  color           : white;
+  background-color: #249633;
 }
