@@ -5,28 +5,10 @@ import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { resetAsyncProps } from '../actions';
 import { getReceipts } from "../actions/getReceipts";
-import { deleteReceipt } from "../actions/deleteReceipt";
-import { connect } from "react-redux";
+import {deleteReceipt} from "../actions/deleteReceipt";
+import { connect } from 'react-redux';
+import { Route, Link } from 'react-router-dom';
 import Search from "./Search";
-
-// const fakeData = [
-//   {
-//     id: 1,
-//     merchant: "Publix",
-//     date: "08/26/19",
-//     total: "$178.96",
-//     category: "Food",
-//     img: ""
-//   },
-//   {
-//     id: 2,
-//     merchant: "Best Buy",
-//     date: "08/24/19",
-//     total: "$362.70",
-//     category: "Electronics",
-//     img: ""
-//   }
-// ];
 
 const Dashboard = props => {
   const [isSearching, setIsSearching] = useState(false);
@@ -79,6 +61,7 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -88,10 +71,12 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -101,6 +86,7 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })}
 
@@ -137,6 +123,7 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -145,10 +132,12 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -157,6 +146,7 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })}
             <Spent time={"3 months"} />
@@ -192,6 +182,7 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -201,10 +192,12 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
+                    <Link to={`/${data.id}`}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -214,6 +207,7 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
+                    </Link>
                   );
                 })}
             <Spent time={"year"} />

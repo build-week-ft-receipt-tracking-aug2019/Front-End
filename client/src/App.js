@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import CreateNewUser from "./components/CreateNewUser";
 import Login from "./components/Login";
 import AddReceipt from "./components/AddReceipt";
-import ReceiptList from "./components/ReceiptList";
+import TabContent from "./components/TabContent";
 
 function App() {
   return (
@@ -18,8 +18,7 @@ function App() {
       {/* private routes below */}
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
-      <Route path="/receipt" component={ReceiptList}/>
-      <Route path="/receipt/:id" component={Dashboard}/>
+      <Route exact path="/:receiptID" render={props => <TabContent {...props}/>} />
     </div>
   );
 }

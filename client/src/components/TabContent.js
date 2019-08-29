@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import '../App.css'
 
 const TabContent = (props) => {
+  const [receipt, setReceipt] = useState({
+    myReceipt: {}
+  })
+  console.log('PROPS WITHIN TABCONTENT', props)
+
+
   const { merchant, date, total, id } = props; 
   return (
     <div className="tab">
@@ -14,7 +20,8 @@ const TabContent = (props) => {
           <div className="editCard">Edit</div>
           <div 
             className="deleteCard" 
-            onClick={()=> {
+            onClick={(event)=> {
+              event.stopPropagation(); 
               props.deleteReceipt(id);
               props.setCounter(!props.counter)}}
           >X</div>
