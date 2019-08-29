@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  width     : 375px;
+  width     : 100%;
   margin    : auto;
 }
 
@@ -26,4 +26,18 @@
 .tab {
   width     : 100%;
   text-align: left;
+}
+
+.editCard {
+  background-color: darkgrey;
+  text-align      : center;
+  border-radius   : 5px;
+  margin-bottom   : 5px;
+}
+
+.deleteCard {
+  background-color: red;
+  color           : white;
+  text-align      : center;
+  border-radius   : 5px;
 }

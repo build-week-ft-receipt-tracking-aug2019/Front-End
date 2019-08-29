@@ -23,7 +23,7 @@ import { addNewReceipt, uploadPic } from "../actions/index";
 // };
 
 const errorStyle = {
-  fontSize: ".5em",
+  fontSize: "1em",
   color: "red"
 };
 
@@ -132,7 +132,6 @@ const AddReceiptForm = props => {
         >
           Add Receipt &rarr;
         </Button>
-
         </form>
       </SemForm>
     </div>

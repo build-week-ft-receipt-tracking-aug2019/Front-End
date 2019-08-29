@@ -1,12 +1,17 @@
-
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import {connect} from 'react-redux'
-import { Button, Form as SemForm } from "semantic-ui-react";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { addUsernameToState } from "../actions/addUsernameToState";
+
 import "semantic-ui-css/semantic.min.css";
-import { AddUsernameToState } from '../actions/addUsernameToState'
+
+const errorStyle = {
+  fontSize: "1em",
+  color: "red"
+};
 
 const Login = ({ errors, touched }) => {
   return (
@@ -21,7 +26,7 @@ const Login = ({ errors, touched }) => {
             placeholder="username"
           />
           {touched.username && errors.username && (
-            <p className="error">{errors.username}</p>
+            <p style={errorStyle}>{errors.username}</p>
           )}
         </SemForm.Field>
         <SemForm.Field>
@@ -50,7 +55,6 @@ const Login = ({ errors, touched }) => {
   );
 };
 
-
 const FormikForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
@@ -58,7 +62,6 @@ const FormikForm = withFormik({
       password: password || ""
     };
   },
-
 
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
@@ -70,25 +73,24 @@ const FormikForm = withFormik({
       .post("https://receipt-tracker-api.herokuapp.com/login", values)
       .then(res => {
         console.log(values);
-        console.log(res.data);
-        localStorage.setItem('token', res.data.token);
-        props.AddUsernameToState(values.username)
-        props.history.push('/')
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        props.addUsernameToState(values.username);
+        props.history.push("/");
       })
       .catch(err => {
         console.log(values);
         console.log(err.response);
+        props.history.push("/");
       });
   }
 })(Login);
 
-
 const mapStateToProps = state => ({
-    state: state
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { AddUsernameToState }
-  )(FormikForm);
+  state: state
+});
 
+export default connect(
+  mapStateToProps,
+  { addUsernameToState }
+)(FormikForm);

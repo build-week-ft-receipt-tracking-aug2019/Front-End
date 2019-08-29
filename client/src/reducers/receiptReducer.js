@@ -8,6 +8,7 @@ import {
     PIC_UPLOAD_START,
     PIC_UPLOAD_SUCCESS,
     RESET_ASYNC_PROPS,
+    DELETE_RECEIPT_SUCCESS,
     ERROR
 } from '../actions/index';
 
@@ -46,6 +47,7 @@ export const receiptReducer = (state = initialState, action) => {
                 isLoading: false,
             };
         case ADD_USERNAME_TO_STATE:
+            console.log("USERNAME PAYLOAD", action.payload)
             return {
                 ...state,
                 isLoading: false,
@@ -73,6 +75,11 @@ export const receiptReducer = (state = initialState, action) => {
                 ...state,
                 pic_success: false,
                 rec_id: ''
+            };
+        case DELETE_RECEIPT_SUCCESS:
+            return {
+                ...state,
+                data: state.data.filter(state.data.id != action.payload.id)
             };
         case ERROR:
             return {
