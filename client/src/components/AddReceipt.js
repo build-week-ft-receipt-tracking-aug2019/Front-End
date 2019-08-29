@@ -70,6 +70,9 @@ const AddReceiptForm = props => {
           <SemForm.Field>
             <input 
               type="number" 
+              step="0.01"
+              min="0"
+              max="100000"
               name="amount_spent" 
               placeholder="Enter amount" 
               onChange={(event) => setFormData({...formData, amount_spent: event.target.value})}
