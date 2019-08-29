@@ -10,7 +10,9 @@ class Nav extends Component {
     e.preventDefault();
     this.setState({ activeItem: name });
   };
-
+  signOut = () => {
+    localStorage.removeItem('token');
+  }
   render() {
     const { activeItem } = this.state;
 
@@ -35,7 +37,7 @@ class Nav extends Component {
             <NavLink to="/sign-up"> Sign Up</NavLink>
           </Menu.Item>
 
-          <Menu.Item
+          {!localStorage.getItem('token') ? (<Menu.Item
             name="Log In"
             active={activeItem === "Log In"}
             onClick={this.handleItemClick}
@@ -43,7 +45,15 @@ class Nav extends Component {
             <NavLink to="/login">
               <Button primary>Log In</Button>
             </NavLink>
-          </Menu.Item>
+          </Menu.Item>):(<Menu.Item
+            name="Log Out"
+            active={activeItem === "Log Out"}
+            onClick={this.signOut}
+          ><NavLink to="/login">
+            <Button color="red">Log Out</Button>
+           </NavLink>
+          </Menu.Item>)}
+
         </Menu>
         <NavLink to="/">
           <img
