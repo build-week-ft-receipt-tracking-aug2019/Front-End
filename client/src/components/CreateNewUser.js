@@ -70,10 +70,15 @@ const FormikForm = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required(),
     email: Yup.string().required(),
-    password: Yup.string().required()
+    password: Yup.string()
+    .min(8, "Password must be a minimum of 8 characters or longer")
+    .required()
   }),
 
-  handleSubmit(values, { props }) {
+  handleSubmit(values, { props, setErrors }) {
+       if (values.email == "waffle@syrup.com"){
+      setErrors({email: "That email is already taken"}); 
+  } else {
     axios
       .post("https://receipt-tracker-api.herokuapp.com/register", values)
       .then(res => {
@@ -86,6 +91,7 @@ const FormikForm = withFormik({
         console.log(values);
         console.log(err.response);
       });
+    }
   }
 })(Login);
 

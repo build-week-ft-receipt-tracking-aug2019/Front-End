@@ -6,21 +6,6 @@ import "semantic-ui-css/semantic.min.css";
 
 import { addNewReceipt, uploadPic } from "../actions/index";
 
-// const formStyle = {
-//   display: "flex",
-//   flexDirection: "column",
-//   alignItems: "center"
-// };
-
-// const inputStyle = {
-//   width: "200px",
-//   margin: "10px"
-// };
-
-// const buttonStyle = {
-//   width: "200px",
-//   margin: "10px"
-// };
 
 const errorStyle = {
   fontSize: "1em",
@@ -138,40 +123,6 @@ const AddReceiptForm = props => {
   )
 };
 
-const AddReceiptForm = withFormik({
-  mapPropsToValues({ merchant, date, category, image, amount_spent }) {
-    return {
-      merchant: merchant || "",
-      date: date || "",
-      category: category || "",
-      // image commented out until we confirm it has been added to back end
-      // image: image || "",
-      amount_spent: amount_spent || "",
-    };
-  },
-
-  validationSchema: Yup.object().shape({
-    merchant: Yup.string().required("Merchant information is required"),
-    date: Yup.string().required("Date is required"),
-    category: Yup.string().required("Please choose a category"),
-    image: Yup.string().notRequired(),
-    amount_spent: Yup.number()
-      .required("Amount_spent is required")
-      .positive()
-  }),
-
-
-    handleSubmit(values, { props }) {
-        // Had to deconstruct my values from formik to add the username from redux store to put in request
-        const valuesWithUsername = ({ values });
-        valuesWithUsername.values.user_username = props.user_username;
-        props.addNewReceipt(valuesWithUsername.values);
-        props.setCounter(!props.counter)
-        // Will need to push to dashboard once back-end is finalized. See below:
-        console.log('props on props.history.push',props)
-        //setTimeout(props.history.push('/'), 5000);
-    }
-})(AddReceipt)
 
 const mapPropsToState = state => {
     console.log(state);

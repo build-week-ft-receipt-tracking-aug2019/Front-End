@@ -1,35 +1,51 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
 import '../App.css'
 
 const TabContent = (props) => {
-  const [receipt, setReceipt] = useState({
-    myReceipt: {}
-  })
+  const [receipt, setReceipt] = useState({})
   console.log('PROPS WITHIN TABCONTENT', props)
+  console.log('receipt', receipt)
 
 
-  const { merchant, date, total, id } = props; 
+  useEffect(() => {
+    setReceipt(props.data.filter(item => item.id === props.id))
+  }, [])
+
+  // const { merchant, date, total, id } = props; 
   return (
     <div className="tab">
-      <div className="tabContent">
-        <div className="nameDateCol">
-          <h3>{merchant}</h3>
-          <h4>{date}</h4>
+      {
+        receipt.length &&
+        <div className="tabContent">
+          <div className="nameDateCol">
+            <h3>{receipt[0].merchant}</h3>
+            <h4>{receipt[0].date}</h4>
+          </div>
+          <div className="totalCol">
+            <div className="editCard">Edit</div>
+            <div
+              className="deleteCard"
+              onClick={(event) => {
+                event.stopPropagation();
+                props.deleteReceipt(receipt.id);
+                props.setCounter(!props.counter)
+              }}
+            >X</div>
+            <h3>Total: {receipt[0].total}</h3>
+          </div>
         </div>
-        <div className="totalCol">
-          <div className="editCard">Edit</div>
-          <div 
-            className="deleteCard" 
-            onClick={(event)=> {
-              event.stopPropagation(); 
-              props.deleteReceipt(id);
-              props.setCounter(!props.counter)}}
-          >X</div>
-          <h3>Total: {total}</h3>
-        </div>
-      </div>
+      }
     </div>
   );
 };
 
-export default TabContent;
+const mapPropsToState = state => {
+  return {
+    data: state.data
+  };
+};
+
+export default connect(
+  mapPropsToState,
+)(TabContent);
