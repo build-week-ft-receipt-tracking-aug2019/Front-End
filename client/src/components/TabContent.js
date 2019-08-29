@@ -23,7 +23,7 @@ const TabContent = (props) => {
             <h4>{receipt[0].date}</h4>
           </div>
           <div className="totalCol">
-            <div className="editCard">Edit</div>
+            {/* <div className="editCard">Edit</div>
             <div
               className="deleteCard"
               onClick={(event) => {
@@ -31,7 +31,7 @@ const TabContent = (props) => {
                 props.deleteReceipt(receipt.id);
                 props.setCounter(!props.counter)
               }}
-            >X</div>
+            >X</div> */}
             <h3>Total: {receipt[0].total}</h3>
           </div>
         </div>

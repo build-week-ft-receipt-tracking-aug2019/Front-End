@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Item } from "semantic-ui-react";
 import { Image } from 'cloudinary-react'
 import styled from "styled-components";
+import {deleteReceipt} from "../actions/deleteReceipt";
 
 const StyledReceiptItem = styled.div`
   background-color: #e6e8e6;
