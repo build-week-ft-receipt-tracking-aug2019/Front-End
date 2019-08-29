@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Item } from "semantic-ui-react";
-import { Image } from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react'
 import styled from "styled-components";
 
 const StyledReceiptItem = styled.div`
@@ -11,8 +11,8 @@ const StyledReceiptItem = styled.div`
 `;
 const Content = styled.div`
 margin: 20px;
-width: 50%;
-height: 150px;
+width: 90%;
+height: 100%;
 background-color:#5bba6f
 border-radius: 8px;
 font-size: 1.5rem;
@@ -47,20 +47,21 @@ export default function ReceiptCard(props) {
           <StyledReceiptItem>
             <Content>
               <Item.Content>
-                <Item.Header as="a">Category: {receipt[0].category}</Item.Header>
                 <Item.Meta>{receipt[0].merchant}</Item.Meta>
+                <Item.Header>Category: {receipt[0].category}</Item.Header>
                 <Item.Description>Amount: {receipt[0].amount_spent}</Item.Description>
-                <Item.Extra> Date:{receipt[0].date}</Item.Extra>
+                <Item.Extra> Date: {receipt[0].date}</Item.Extra>
               </Item.Content>
+
+              <ReceiptImage>
+                <Image className="rec-img" cloudName={'argordon'} publicId={`${props.match.params.receiptID}`} />
+              </ReceiptImage>
             </Content>
-
-            <ReceiptImage>
-              <Image cloudName={'argordon'} publicId={`${props.match.params.receiptID}`} />
-            </ReceiptImage>
-
           </StyledReceiptItem>
-          <button>Edit</button>
-          <button>Delete</button>
+          <div className='buttons'>
+            <button className='edit-btn'>Edit</button>
+            <button className='del-btn'>Delete</button>
+          </div>
         </>
       }
     </Item>
