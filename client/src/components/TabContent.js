@@ -32,7 +32,7 @@ const TabContent = (props) => {
                 props.setCounter(!props.counter)
               }}
             >X</div> */}
-            <h3>Total: {receipt[0].total}</h3>
+            <h3>Total: ${receipt[0].amount_spent}</h3>
           </div>
         </div>
       }
