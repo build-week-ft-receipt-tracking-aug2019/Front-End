@@ -45,7 +45,7 @@ class Nav extends Component {
             onClick={this.handleItemClick}
           >
             <NavLink to="/login">
-              <Button primary>Log In</Button>
+                <Button primary>Log In</Button>
             </NavLink>
           </Menu.Item>):(<Menu.Item
             name="Log Out"
