@@ -79,7 +79,7 @@ export const receiptReducer = (state = initialState, action) => {
         case DELETE_RECEIPT_SUCCESS:
             return {
                 ...state,
-                data: state.data.filter(state.data.id != action.payload.id)
+                data: state.data.filter(state.data.id !== action.payload.id)
             };
         case ERROR:
             return {

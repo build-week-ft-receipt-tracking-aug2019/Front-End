@@ -5,8 +5,8 @@ import '../App.css'
 
 const TabContent = (props) => {
   const [receipt, setReceipt] = useState({})
-  console.log('PROPS WITHIN TABCONTENT', props)
-  console.log('receipt', receipt)
+  // console.log('PROPS WITHIN TABCONTENT', props)
+  //console.log('receipt', receipt)
 
 
   useEffect(() => {

@@ -9,6 +9,7 @@ import CreateNewUser from "./components/CreateNewUser";
 import Login from "./components/Login";
 import AddReceipt from "./components/AddReceipt";
 import ReceiptCard from "./components/ReceiptCard";
+import { deleteReceipt } from "./actions/deleteReceipt";
 
 function App(state) {
   console.log(state)
@@ -20,7 +21,7 @@ function App(state) {
       {/* private routes below */}
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
-      <Route exact path="/:receiptID" render={props => <ReceiptCard {...props} data={state.data}/>} />
+      <Route exact path="/:receiptID" render={props => <ReceiptCard {...props} data={state.data} deleteReceipt={deleteReceipt}/>} />
     </div>
   );
 }
@@ -32,8 +33,8 @@ const mapPropsToState = state => {
     user_username: state.user_username,
     isLoading: state.isLoading,
     error: state.error,
-    data: state.data
+    data: state.data,
   }
 }
 
-export default connect(mapPropsToState, {})(App);
+export default connect(mapPropsToState, {deleteReceipt})(App);
