@@ -37,7 +37,6 @@ const Dashboard = props => {
     setIsSearching(!isSearching);
   };
 
-const Dashboard = props => {
   // Need to put this useEffect in the single Receipt component
   useEffect(() => {
     console.log('Dashboard mounted');
