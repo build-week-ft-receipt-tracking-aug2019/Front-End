@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from '../utilities/axiosWithAuth';
+import { Edit } from '../actions/index'
 
 
 
-const Edit = (props) => {
+const EditReceipt = (props) => {
     const [formData, setFormData] = useState(initialState);
 
     const initialState = {
@@ -21,8 +21,7 @@ const Edit = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault()
-        axiosWithAuth()
-            .put('/users/receipt/:id', formData)
+        props.Edit(formData)
     }
 
 
@@ -62,4 +61,14 @@ const Edit = (props) => {
     )
 }
 
-export default Edit
+const mapPropsToState = state => {
+    console.log(state);
+    return {
+        data: state.data
+    }
+};
+
+export default connect(
+  mapPropsToState,
+  { Edit }
+  )(EditReceipt);
