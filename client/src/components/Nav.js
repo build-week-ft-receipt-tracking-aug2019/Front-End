@@ -10,7 +10,11 @@ class Nav extends Component {
     e.preventDefault();
     this.setState({ activeItem: name });
   };
+  signOut = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
 
+  }
   render() {
     const { activeItem } = this.state;
 
@@ -35,7 +39,7 @@ class Nav extends Component {
             <NavLink to="/sign-up"> Sign Up</NavLink>
           </Menu.Item>
 
-          <Menu.Item
+          {!localStorage.getItem('token') ? (<Menu.Item
             name="Log In"
             active={activeItem === "Log In"}
             onClick={this.handleItemClick}
@@ -43,14 +47,21 @@ class Nav extends Component {
             <NavLink to="/login">
               <Button primary>Log In</Button>
             </NavLink>
-          </Menu.Item>
+          </Menu.Item>):(<Menu.Item
+            name="Log Out"
+            active={activeItem === "Log Out"}
+            onClick={this.signOut}
+          ><NavLink to="/login">
+            <Button color="red">Log Out</Button>
+           </NavLink>
+          </Menu.Item>)}
+
         </Menu>
         <NavLink to="/">
           <img
             className="ReceiptLogo"
             src="https://files.slack.com/files-pri/T4JUEB3ME-FMQ7Z2Z60/image.png"
             alt="logo"
-            className="logoBoi"
           />
         </NavLink>
       </>
