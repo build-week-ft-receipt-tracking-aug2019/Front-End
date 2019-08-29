@@ -9,8 +9,10 @@ import {deleteReceipt} from "../actions/deleteReceipt";
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import Search from "./Search";
+import ReceiptCard from "./ReceiptCard";
 
 const Dashboard = props => {
+  console.log(props)
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [counter, setCounter] = useState(false);
@@ -60,6 +62,7 @@ const Dashboard = props => {
             </div>
             {isSearching === false
               ? props.data.map(data => {
+                console.log(data)
                   return (
                     <Link to={`/${data.id}`}>
                     <TabContent
@@ -131,6 +134,7 @@ const Dashboard = props => {
                       id={data.id}
                       setCounter={setCounter}
                       counter={counter}
+                      deleteReceipt={props.deleteReceipt}
                     />
                     </Link>
                   );
@@ -145,6 +149,7 @@ const Dashboard = props => {
                       id={data.id}
                       setCounter={setCounter}
                       counter={counter}
+                      deleteReceipt={props.deleteReceipt}
                     />
                     </Link>
                   );
