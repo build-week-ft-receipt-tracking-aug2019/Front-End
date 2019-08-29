@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Item } from "semantic-ui-react";
-import { Image, Transformation } from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react';
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import {deleteReceipt} from '../actions/deleteReceipt'
+
 
 const StyledReceiptItem = styled.div`
   background-color: #e6e8e6;
@@ -18,21 +21,21 @@ border-radius: 8px;
 font-size: 1.5rem;
 `;
 
-
 const ReceiptImage = styled.div`
 width: 55%;
 margin: 20px;
-
 `;
 
 
-
-export default function ReceiptCard(props) {
+const ReceiptCard = (props) => {
   console.log(props);
 
   const [receipt, setReceipt] = useState({})
   console.log('receipt', receipt)
 
+  const deleteHandler = () => {
+    props.deleteReceipt(props.match.params.receiptID)
+  }
 
   useEffect(() => {
     setReceipt(props.data.filter(item => item.id.toString() === props.match.params.receiptID))
@@ -59,8 +62,8 @@ export default function ReceiptCard(props) {
             </Content>
           </StyledReceiptItem>
           <div className='buttons'>
-            <button className='edit-btn'>Edit</button>
-            <button className='del-btn'>Delete</button>
+            <div className='edit-btn'>Edit</div>
+            <div className='del-btn' onClick={()=>deleteHandler()}>Delete</div>
           </div>
         </>
       }
@@ -68,5 +71,12 @@ export default function ReceiptCard(props) {
 
 
   )
+    }
 
-}
+    const mapPropsToState = state => {
+      return {
+        data: state.data
+      };
+    };
+
+export default connect(mapPropsToState, {deleteReceipt})(ReceiptCard)
