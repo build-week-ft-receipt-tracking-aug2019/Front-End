@@ -3,6 +3,7 @@ import { Tab } from "semantic-ui-react";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
+import { resetAsyncProps } from '../actions';
 import { getReceipts } from "../actions/getReceipts";
 import { deleteReceipt } from "../actions/deleteReceipt";
 import { connect } from "react-redux";
@@ -36,6 +37,13 @@ const Dashboard = props => {
     setIsSearching(!isSearching);
   };
 
+const Dashboard = props => {
+  // Need to put this useEffect in the single Receipt component
+  useEffect(() => {
+    console.log('Dashboard mounted');
+    props.resetAsyncProps();
+  }, [])
+  
   const displayState = () => {
     console.log(isSearching);
     console.log(searchResults);
@@ -235,6 +243,8 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
+    pic_success: state.pic_success,
+    rec_id: state.rec_id,
     user_username: state.user_username,
     isLoading: state.isLoading,
     error: state.error,
@@ -244,5 +254,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { getReceipts: getReceipts, deleteReceipt: deleteReceipt }
+  { getReceipts: getReceipts, resetAsyncProps, deleteReceipt: deleteReceipt }
 )(Dashboard);
