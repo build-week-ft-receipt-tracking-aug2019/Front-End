@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import Search from "./Search";
 import ReceiptCard from "./ReceiptCard";
+import '../App.css'
 
 const Dashboard = props => {
   console.log(props)
@@ -64,7 +65,7 @@ const Dashboard = props => {
               ? props.data.map(data => {
                 console.log(data)
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -79,7 +80,7 @@ const Dashboard = props => {
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -126,7 +127,7 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -141,7 +142,7 @@ const Dashboard = props => {
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -187,7 +188,7 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -202,7 +203,7 @@ const Dashboard = props => {
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`}>
+                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}

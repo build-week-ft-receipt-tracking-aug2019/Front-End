@@ -12,6 +12,8 @@ class Nav extends Component {
   };
   signOut = () => {
     localStorage.removeItem('token');
+    window.location.reload();
+
   }
   render() {
     const { activeItem } = this.state;
@@ -60,7 +62,6 @@ class Nav extends Component {
             className="ReceiptLogo"
             src="https://files.slack.com/files-pri/T4JUEB3ME-FMQ7Z2Z60/image.png"
             alt="logo"
-            className="logoBoi"
           />
         </NavLink>
       </>
