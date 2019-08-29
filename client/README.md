@@ -1,68 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Other Components of This Project
+​
+- [iOS App](https://github.com/build-week-ft-receipt-tracking-aug2019/Mobile-App)
+- [Android App](https://github.com/build-week-ft-receipt-tracking-aug2019/Android-App)
+- [Backend](https://github.com/build-week-ft-receipt-tracking-aug2019/Backend)
+- [Frontend](https://github.com/build-week-ft-receipt-tracking-aug2019/Front-End)
+- [Marketing Page](https://github.com/build-week-ft-receipt-tracking-aug2019/Marketing-Page)
+​
+### Team Members
+​
+|Role|Name / LinkedIn|Twitter|Github|Instagram|
+|---|---|---|---|---|
+|iOS Unit 1 Dev|[Percival Ngan](https://www.linkedin.com/in/percival-ngan-869381163/)|[@PercivalNgan](https://twitter.com/PercivalNgan)|[PercivalN](https://github.com/PercivalN)|
+|iOS Unit 1 Dev|Alexandra Rhodes|[alexcodes_io](https://twitter.com/alexcodes_io)|[alexnrhodes](https://github.com/alexnrhodes)|[alexcodes.io](https://www.instagram.com/alexcodes.io/)
+|iOS Unit 2 Dev|Jacob Connerly|[@jakeconnerly](https://twitter.com/jakeconnerly)|[jlconnerly](https://github.com/jlconnerly)|
+|Android Unit 1 Dev|[Ronnie Dipple](https://www.linkedin.com/in/ronnie-dipple-91178047/)|[@RDipple](https://twitter.com/RDipple)|[RonnieDipple](https://github.com/RonnieDipple)|
+|Android Unit 1 Dev|[Jack Seymour](https://www.linkedin.com/in/jack-seymour-97339a192)||[stilljack](https://github.com/stilljack/)|
+|Backend Dev|Christian Pelayo||[onetrckchris](https://github.com/onetrckchris)|
+|Web Marketing Dev|[Austin Michaud](https://www.linkedin.com/in/austin-michaud-9b25aa141/)||[foobar404](https://github.com/foobar404)|
+|Web Marketing Dev|[Nathaniel Mosco](https://www.linkedin.com/in/nate-mosco-98888ab4/)|[@MoscoNathaniel](https://twitter.com/MoscoNathaniel)|[natemosco](https://github.com/natemosco)|
+|Web Marketing Dev|[Temitope Akinsoto](https://www.linkedin.com/in/temitope-akinsoto-27806a52/)|[@Dev_Temitope](https://twitter.com/Dev_Temitope)|[temitopeakinsoto](https://github.com/temitopeakinsoto)|
+|Front End Dev|Nicholas Gonzalez||[NickGonzalez04](https://github.com/NickGonzalez04)|
+|Front End Dev|Pearl Wise||[pj-wise](https://github.com/pj-wise)|
+|Front End Dev|[Luis Guzman](https://www.linkedin.com/in/luis-guzman-52b93b73/)|[@antilou86](https://twitter.com/antilou86)|[antilou86](https://github.com/antilou86)|
+|Front End Dev|Alex Gordon|[@argordondev](https://twitter.com/argordondev)|[agordon1123](https://github.com/agordon1123)|
+|Front End Dev|Blaine Blonquist||[bquizza5](https://github.com/bquizza5)|
+|Project Lead|[Michael Redig](https://www.linkedin.com/in/michael-redig/)|[@mredig](https://twitter.com/mredig)|[mredig](https://github.com/mredig)|
