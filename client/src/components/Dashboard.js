@@ -5,7 +5,7 @@ import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { getReceipts } from "../actions";
-
+import { resetAsyncProps } from '../actions';
 
 const fakeData = [
   {
@@ -99,11 +99,11 @@ const panes = [
 ];
 
 const Dashboard = props => {
+  // Need to put this useEffect in the single Receipt component
   useEffect(() => {
-
-
-    props.getReceipts(props);
     console.log('Dashboard mounted')
+    props.getReceipts(props);
+    props.resetAsyncProps();
   }, [])
 
   return (
@@ -120,6 +120,8 @@ const Dashboard = props => {
 const mapPropsToState = state => {
   console.log(state);
   return {
+    pic_success: state.pic_success,
+    rec_id: state.rec_id,
     user_username: state.user_username,
     isLoading: state.isLoading,
     error: state.error,
@@ -129,5 +131,6 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { getReceipts }
-)(Dashboard);
+  { getReceipts, 
+    resetAsyncProps 
+  })(Dashboard);

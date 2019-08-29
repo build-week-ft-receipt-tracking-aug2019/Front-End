@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
-import { addNewReceipt } from "../actions/index";
-
+import { addNewReceipt, uploadPic } from "../actions/index";
 
 // const formStyle = {
 //   display: "flex",
@@ -29,113 +27,123 @@ const errorStyle = {
   color: "red"
 };
 
-// * README *:
-// As of 18:00 Tuesday getting 404 error on posting new receipt.
-// Believe issue is with the back-end api as the data passed into the action at line 111
-//  is exactly what the back-end README calls for.
-
-const AddReceipt = ({ errors, touched }) => {
-  const setFieldValue = event => {
-    console.log(event.target.files[0].name);
+const AddReceiptForm = props => {
+  console.log(props);
+  
+  const initialState = {
+    date: '',
+    amount_spent: null,
+    category: '',
+    merchant: '',
+    user_username: props.user_username
   };
+  
+  // README: To display an image, import{ Image } from 'cloudinary-react'
+  // and render <Image cloudName={'argordon} publicId={`${props.match.someID...}`} />
+
+  // State to POST receipt data to our back-end
+  const [formData, setFormData] = useState(initialState);
+  // State to POST receipt image to Cloudinary
+  const [selectedPic, setSelectedPic] = useState({});
+  // State to set ID created by our back-end immediately onto image we POST to Cloudinary
+  const [pic, setPic] = useState('')
+
+  // Watches for the ID to be passed onto global state
+  useEffect(() => {
+    setPic(props.rec_id)
+  }, [props.rec_id]);
+
+  // Watches to state to be updated from global state
+  useEffect(() => {
+    // POST to Cloudinary
+    props.uploadPic(selectedPic, pic)
+  }, [pic]);
+
+  // Will need to push to `users/receipts/${pros.rec_id}`
+  // Note the useEffect on the Dashboard.js to 
+  props.pic_success === true && props.history.push('/');
 
   return (
-    <SemForm className="formContainers">
-      <Form>
-        <SemForm.Field>
-          <Field type="date" name="date" placeholder="date" />
-          {touched.date && errors.date && (
-            <p style={errorStyle}>{errors.date}</p>
-          )}
-        </SemForm.Field>
-        <SemForm.Field>
-          <Field type="number" name="amount_spent" placeholder="Enter amount" />
-          {touched.amount_spent && errors.amount_spent && (
-            <p style={errorStyle}>{errors.amount_spent}</p>
-          )}
-        </SemForm.Field>
-        <SemForm.Field>
-          <Field
-            type="text"
-            name="category"
-            placeholder="selector for category will go here"
-          />
-          {touched.category && errors.category && (
-            <p style={errorStyle}>{errors.category}</p>
-          )}
-        </SemForm.Field>
-        <SemForm.Field>
-          <Field
-            type="text"
-            name="merchant"
-            placeholder="Enter merchant info:"
-          />
-          {touched.merchant && errors.merchant && (
-            <p style={errorStyle}>{errors.merchant}</p>
-          )}
-        </SemForm.Field>
-        <SemForm.Field>
-          <label for="upload" className="custom-upload">
-            <p>Upload an image</p>
-            <Field
-              type="file"
-              name="image"
-              id="upload"
-              style={{ display: "none" }}
-              // onChange={setFieldValue}
+    <div>
+      <SemForm className="formContainers">
+        <form onSubmit={(event) => {
+          event.preventDefault();
+          // POST to back-end
+          props.addNewReceipt(formData);
+          }}
+        >
+          <SemForm.Field>
+            <input 
+              type="date" 
+              name="date" 
+              placeholder="date"
+              onChange={(event) => setFormData({...formData, date: event.target.value})}
             />
-          </label>
-        </SemForm.Field>
-        <Button
+            {/* {touched.date && errors.date && (<p> style={errorStyle}>{errors.date}</p>)} */}
+          </SemForm.Field>
+
+          <SemForm.Field>
+            <input 
+              type="number" 
+              name="amount_spent" 
+              placeholder="Enter amount" 
+              onChange={(event) => setFormData({...formData, amount_spent: event.target.value})}
+            />
+          {/* {touched.amount_spent && errors.amount_spent && (<p> style={errorStyle}>{errors.amount_spent}</p>)} */}
+          </SemForm.Field>
+
+          <SemForm.Field>
+            <input 
+              type="text" 
+              name="category" 
+              placeholder="selector for category will go here" 
+              onChange={(event) => setFormData({...formData, category: event.target.value})}
+            />
+          {/* {touched.category && errors.category && (<p> style={errorStyle}>{errors.category}</p>)} */}
+          </SemForm.Field>
+
+          <SemForm.Field>
+            <input 
+              type="text" 
+              name="merchant" 
+              placeholder="Enter merchant info:" 
+              onChange={(event) => setFormData({...formData, merchant: event.target.value})}
+            />
+          {/* {touched.merchant && errors.merchant && (<p> style={errorStyle}>{errors.merchant}</p>)} */}
+          </SemForm.Field>
+
+          <SemForm.Field>
+            <input 
+              type="file" 
+              name="image" 
+              id="upload" 
+              // style={{ display: "none" }} 
+              onChange={(event) => setSelectedPic(event.target.files[0])}
+            />
+          </SemForm.Field>
+        
+         <Button
           style={{
             margin: "1em auto",
             backgroundColor: "#25BB49",
-            color: "white"
+            color: "white" 
           }}
-          type="submit"
+            type="submit"
         >
           Add Receipt &rarr;
         </Button>
-      </Form>
-    </SemForm>
-  );
+
+        </form>
+      </SemForm>
+    </div>
+  )
 };
-
-const AddReceiptForm = withFormik({
-  mapPropsToValues({ merchant, date, category, image, amount_spent }) {
-    return {
-      merchant: merchant || "",
-      date: date || "",
-      category: category || "",
-      // image commented out until we confirm it has been added to back end
-      // image: image || "",
-      amount_spent: amount_spent || "",
-    };
-  },
-
-  validationSchema: Yup.object().shape({
-    merchant: Yup.string().required("Merchant information is required"),
-    date: Yup.string().required("Date is required"),
-    category: Yup.string().required("Please choose a category"),
-    image: Yup.string().notRequired(),
-    amount_spent: Yup.number()
-      .required("Amount_spent is required")
-      .positive()
-  }),
-
-    handleSubmit(values, { props }) {
-        // Had to deconstruct my values from formik to add the username from redux store to put in request
-        const valuesWithUsername = ({ values });
-        valuesWithUsername.values.user_username = props.user_username;
-        props.addNewReceipt(valuesWithUsername.values);
-        // Will need to push to dashboard once back-end is finalized. See below:
-        // setTimeout(props.history.push('/*New-Card-Path */'), 5000);
-    }
-})(AddReceipt)
-
+  
 const mapPropsToState = state => {
     console.log(state);
     return {
+        pic_success: state.pic_success,
+        rec_id: state.rec_id,
         user_username: state.user_username,
         isLoading: state.isLoading,
         error: state.error,
@@ -145,5 +153,6 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { addNewReceipt }
-)(AddReceiptForm);
+  { addNewReceipt, 
+    uploadPic 
+  })(AddReceiptForm);
