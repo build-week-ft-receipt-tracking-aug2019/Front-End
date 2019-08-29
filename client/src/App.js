@@ -18,7 +18,7 @@ function App() {
       {/* private routes below */}
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
-      <Route path="/:receiptID" component={TabContent} />
+      <Route exact path="/:receiptID" render={props => <TabContent {...props}/>} />
     </div>
   );
 }

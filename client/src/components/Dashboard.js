@@ -4,9 +4,9 @@ import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
 import { getReceipts } from "../actions/getReceipts";
-import {deleteReceipt} from "../actions/deleteReceipt"
+import {deleteReceipt} from "../actions/deleteReceipt";
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // const fakeData = [
 //   {
@@ -44,7 +44,7 @@ const Dashboard = props => {
             </div>
             {props.data && props.data.map(data => {
               return (
-                <Link to={`/receipt/${data.id}`}>
+                <Link to={`/${data.id}`}>
                   <TabContent
                     merchant={data.merchant}
                     date={data.date}
@@ -73,7 +73,7 @@ const Dashboard = props => {
             </div>
             {props.data && props.data.map(data => {
               return (                
-                <Link to={`/receipt/${data.id}`}>
+                <Link to={`/${data.id}`}>
                   <TabContent
                     merchant={data.merchant}
                     date={data.date}
@@ -103,7 +103,7 @@ const Dashboard = props => {
             {props.data && props.data.map(data => {
               return (
                 
-                <Link to={`/receipt/${data.id}`}>
+                <Link to={`/${data.id}`}>
                   <TabContent
                     merchant={data.merchant}
                     date={data.date}
