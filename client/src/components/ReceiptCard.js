@@ -43,32 +43,46 @@ const ReceiptCard = (props) => {
   }, [props.data])
 
   return (
-
     <Item>
-      {
-        receipt.length &&
+      {receipt.length && (
         <>
           <StyledReceiptItem>
             <Content>
               <Item.Content>
                 <Item.Meta>{receipt[0].merchant}</Item.Meta>
                 <Item.Header>Category: {receipt[0].category}</Item.Header>
-                <Item.Description>Amount: {receipt[0].amount_spent}</Item.Description>
+                <Item.Description>
+                  Amount: {receipt[0].amount_spent}
+                </Item.Description>
                 <Item.Extra> Date: {receipt[0].date}</Item.Extra>
               </Item.Content>
 
               <ReceiptImage>
-                <Image className="rec-img" cloudName={'argordon'} publicId={`${props.match.params.receiptID}`} />
+                <Image
+                  className="rec-img"
+                  cloudName={"argordon"}
+                  publicId={`${props.match.params.receiptID}`}
+                />
               </ReceiptImage>
             </Content>
           </StyledReceiptItem>
+<<<<<<< HEAD
+          <div className="buttons">
+            <button className="edit-btn">Edit</button>
+            <button className="del-btn">Delete</button>
+=======
           <div className='buttons'>
             <Link to={`/edit/${props.match.params.receiptID}`}><div className='edit-btn'>Edit</div></Link>
             <div className='del-btn' onClick={()=>deleteHandler()}>Delete</div>
+>>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
           </div>
         </>
-      }
+      )}
     </Item>
+<<<<<<< HEAD
+  );
+}
+=======
 
 
   )
@@ -81,3 +95,4 @@ const ReceiptCard = (props) => {
     };
 
 export default connect(mapPropsToState, {deleteReceipt})(ReceiptCard)
+>>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
