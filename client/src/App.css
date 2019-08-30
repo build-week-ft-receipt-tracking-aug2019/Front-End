@@ -19,6 +19,16 @@
   padding        : 15px;
 }
 
+@media(min-width: 479px) {
+  .formContainers {
+    display: flex;
+    justify-content: center;
+  }
+  form.login-Form {
+    width: 370px;
+  }
+}
+
 .logoBoi {
   height: 100%;
 }

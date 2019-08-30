@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import AddReceipt from "./components/AddReceipt";
 import ReceiptCard from "./components/ReceiptCard";
 import { deleteReceipt } from "./actions/deleteReceipt";
+import { uploadPic } from './actions/uploadPic';
 import EditReceipt from "./components/editReceipt";
 
 function App(state) {
@@ -59,5 +60,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  { deleteReceipt, EditReceipt }
+  { deleteReceipt, EditReceipt, uploadPic }
 )(App);

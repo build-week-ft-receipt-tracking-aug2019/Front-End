@@ -46,10 +46,10 @@ export const receiptReducer = (state = initialState, action) => {
         case ADD_RECEIPT_SUCCESS:
             return {
                 ...state,
+                pic_success: true,
                 isLoading: false,
             };
         case ADD_USERNAME_TO_STATE:
-            console.log("USERNAME PAYLOAD", action.payload)
             return {
                 ...state,
                 isLoading: false,
@@ -90,8 +90,6 @@ export const receiptReducer = (state = initialState, action) => {
                 error: ''
             };
         case EDIT_RECEIPT_SUCCESS:
-            // let newData = state.data.filter(state.data.id !== action.payload.id);
-            // newData.push(action.payload);
             return {
                 ...state,
                 data: state.data.map(item => {

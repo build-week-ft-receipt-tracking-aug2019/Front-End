@@ -12,7 +12,7 @@ class Nav extends Component {
   };
   signOut = () => {
     localStorage.removeItem('token');
-    window.location.reload();
+    // window.location.reload();
 
   }
   render() {
@@ -28,7 +28,7 @@ class Nav extends Component {
             active={activeItem === "Add Receipt"}
             onClick={this.handleItemClick}
           >
-            <NavLink to="/add-receipt"> Add Receipt +</NavLink>
+              <NavLink to="/add-receipt"> Add Receipt +</NavLink>
           </Menu.Item>
 
           <Menu.Item
@@ -36,7 +36,7 @@ class Nav extends Component {
             active={activeItem === "Sign Up"}
             onClick={this.handleItemClick}
           >
-            <NavLink to="/sign-up"> Sign Up</NavLink>
+              <NavLink to="/sign-up"> Sign Up</NavLink>
           </Menu.Item>
 
           {!localStorage.getItem('token') ? (<Menu.Item
@@ -52,7 +52,7 @@ class Nav extends Component {
             active={activeItem === "Log Out"}
             onClick={this.signOut}
           ><NavLink to="/login">
-            <Button color="red">Log Out</Button>
+              <Button color="red">Log Out</Button>
            </NavLink>
           </Menu.Item>)}
 

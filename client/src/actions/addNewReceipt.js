@@ -9,8 +9,8 @@ export const addNewReceipt = newReceipt => {
             .post('https://receipt-tracker-api.herokuapp.com/users/receipt', newReceipt)
             .then(res => {
                 console.log(res);
-                dispatch({ type: ADD_RECEIPT_SUCCESS});
                 dispatch({ type: ADD_REC_ID_TO_STATE, payload: res.data[0]});
+                dispatch({ type: ADD_RECEIPT_SUCCESS});
             })
             .catch(err => {
                 console.log(err);
