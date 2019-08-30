@@ -1,15 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Tab } from "semantic-ui-react";
-import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
-import Spent from "./Spent";
 import { resetAsyncProps } from "../actions";
 import { getReceipts } from "../actions/getReceipts";
 import { deleteReceipt } from "../actions/deleteReceipt";
 import { connect } from "react-redux";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Loader from 'react-loader-spinner';
 import Search from "./Search";
-import ReceiptCard from "./ReceiptCard";
 import "../App.css";
 
 const Dashboard = props => {
@@ -243,11 +241,19 @@ const Dashboard = props => {
 
   return (
     <div>
-      <Tab
-        style={{ backgroundColor: "#e6e8e6" }}
-        panes={panes}
-        renderActiveOnly={false}
-      />
+      {
+        props.isLoading ? (
+          <Loader
+                type="Puff"
+                color="#00BFFF"
+                /> 
+        ) :
+        <Tab
+          style={{ backgroundColor: "#e6e8e6" }}
+          panes={panes}
+          renderActiveOnly={false}
+        />
+      }
     </div>
   );
 };
