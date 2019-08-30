@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Item } from "semantic-ui-react";
-<<<<<<< HEAD
-import { Image, Transformation } from "cloudinary-react";
-=======
 import { Image, Transformation } from 'cloudinary-react';
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
 import styled from "styled-components";
 import { connect } from 'react-redux';
 import {deleteReceipt} from '../actions/deleteReceipt'
@@ -27,25 +23,6 @@ font-size: 1.5rem;
 `;
 
 const ReceiptImage = styled.div`
-<<<<<<< HEAD
-  width: 55%;
-  margin: 20px;
-`;
-
-export default function ReceiptCard(props) {
-  console.log(props);
-
-  const [receipt, setReceipt] = useState({});
-  console.log("receipt", receipt);
-
-  useEffect(() => {
-    setReceipt(
-      props.data.filter(
-        item => item.id.toString() === props.match.params.receiptID
-      )
-    );
-  }, []);
-=======
 width: 55%;
 margin: 20px;
 `;
@@ -64,7 +41,6 @@ const ReceiptCard = (props) => {
   useEffect(() => {
     setReceipt(props.data.filter(item => item.id.toString() === props.match.params.receiptID))
   }, [props.data])
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
 
   return (
     <Item>

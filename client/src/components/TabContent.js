@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import { connect } from "react-redux";
-import "../App.css";
-=======
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react';
 import '../App.css'
@@ -11,7 +7,6 @@ const TabContent = (props) => {
   const [receipt, setReceipt] = useState({})
   // console.log('PROPS WITHIN TABCONTENT', props)
   //console.log('receipt', receipt)
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
 
 const TabContent = props => {
   const [receipt, setReceipt] = useState({});
