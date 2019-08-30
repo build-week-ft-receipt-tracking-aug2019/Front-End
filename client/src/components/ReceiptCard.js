@@ -40,7 +40,7 @@ const ReceiptCard = (props) => {
 
   useEffect(() => {
     setReceipt(props.data.filter(item => item.id.toString() === props.match.params.receiptID))
-  }, [])
+  }, [props.data])
 
   return (
 

@@ -94,13 +94,13 @@ export const receiptReducer = (state = initialState, action) => {
             // newData.push(action.payload);
             return {
                 ...state,
-                data: [state.data.map(item => {
+                data: state.data.map(item => {
                     if (item.id === action.payload.id) {
                         return action.payload
                     } else {
                         return item
                     }
-                })]
+                })
             };
         case ERROR:
             return {
