@@ -1,19 +1,16 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Tab } from "semantic-ui-react";
-import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
-import Spent from "./Spent";
 import { resetAsyncProps } from '../actions';
 import { getReceipts } from "../actions/getReceipts";
-import {deleteReceipt} from "../actions/deleteReceipt";
+import { deleteReceipt } from "../actions/deleteReceipt";
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Search from "./Search";
-import ReceiptCard from "./ReceiptCard";
 import '../App.css'
 
 const Dashboard = props => {
-  
+
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [counter, setCounter] = useState(false);
@@ -24,12 +21,9 @@ const Dashboard = props => {
 
   // Need to put this useEffect in the single Receipt component
   useEffect(() => {
-    console.log('Dashboard mounted');
     props.resetAsyncProps();
   }, [])
-  
 
-  console.log("FROM THE DASH-", props.data);
   const panes = [
     {
       menuItem: "Recent",
@@ -45,21 +39,21 @@ const Dashboard = props => {
                   </h2>
                 </>
               ) : (
-                <Search
-                  allData={props.data}
-                  isSearching={isSearching}
-                  setIsSearching={setIsSearching}
-                  setSearchResults={setSearchResults}
-                />
-              )}
+                  <Search
+                    allData={props.data}
+                    isSearching={isSearching}
+                    setIsSearching={setIsSearching}
+                    setSearchResults={setSearchResults}
+                  />
+                )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+                null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
               ? props.data.map(data => {
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -69,13 +63,12 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
-                    </Link>
-                  );
-                })
+                  </Link>
+                );
+              })
               : searchResults && searchResults.map(data => {
-                console.log(searchResults)
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -85,11 +78,9 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
-                    </Link>
-                  );
-                })}
-
-            <Spent time={"month"} />
+                  </Link>
+                );
+              })}
           </Fragment>
         )
       }
@@ -108,21 +99,21 @@ const Dashboard = props => {
                   </h2>
                 </>
               ) : (
-                <Search
-                  allData={props.data}
-                  isSearching={isSearching}
-                  setIsSearching={setIsSearching}
-                  setSearchResults={setSearchResults}
-                />
-              )}
+                  <Search
+                    allData={props.data}
+                    isSearching={isSearching}
+                    setIsSearching={setIsSearching}
+                    setSearchResults={setSearchResults}
+                  />
+                )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+                null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
               ? props.data.map(data => {
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -132,12 +123,12 @@ const Dashboard = props => {
                       counter={counter}
                       deleteReceipt={props.deleteReceipt}
                     />
-                    </Link>
-                  );
-                })
+                  </Link>
+                );
+              })
               : searchResults.map(data => {
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -147,10 +138,9 @@ const Dashboard = props => {
                       counter={counter}
                       deleteReceipt={props.deleteReceipt}
                     />
-                    </Link>
-                  );
-                })}
-            <Spent time={"3 months"} />
+                  </Link>
+                );
+              })}
           </Fragment>
         )
       }
@@ -169,21 +159,21 @@ const Dashboard = props => {
                   </h2>
                 </>
               ) : (
-                <Search
-                  allData={props.data}
-                  isSearching={isSearching}
-                  setIsSearching={setIsSearching}
-                  setSearchResults={setSearchResults}
-                />
-              )}
+                  <Search
+                    allData={props.data}
+                    isSearching={isSearching}
+                    setIsSearching={setIsSearching}
+                    setSearchResults={setSearchResults}
+                  />
+                )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+               null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
               ? props.data.map(data => {
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -193,12 +183,12 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
-                    </Link>
-                  );
-                })
+                  </Link>
+                );
+              })
               : searchResults.map(data => {
-                  return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
+                return (
+                  <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
                       merchant={data.merchant}
                       date={data.date}
@@ -208,10 +198,9 @@ const Dashboard = props => {
                       setCounter={setCounter}
                       counter={counter}
                     />
-                    </Link>
-                  );
-                })}
-            <Spent time={"year"} />
+                  </Link>
+                );
+              })}
           </Fragment>
         )
       }
@@ -220,7 +209,6 @@ const Dashboard = props => {
 
   useEffect(() => {
     props.getReceipts(props);
-    console.log("Dashboard mounted", props);
   }, [counter]);
 
   return (
@@ -235,7 +223,6 @@ const Dashboard = props => {
 };
 
 const mapPropsToState = state => {
-  console.log(state);
   return {
     pic_success: state.pic_success,
     rec_id: state.rec_id,

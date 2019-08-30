@@ -2,7 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 const Login = ({ errors, touched }) => {
@@ -76,7 +76,7 @@ const FormikForm = withFormik({
   }),
 
   handleSubmit(values, { props, setErrors }) {
-       if (values.email == "waffle@syrup.com"){
+       if (values.email === "waffle@syrup.com"){
       setErrors({email: "That email is already taken"}); 
   } else {
     axios

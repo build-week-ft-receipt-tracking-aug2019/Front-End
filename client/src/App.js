@@ -20,8 +20,8 @@ function App(state) {
       <Route path="/login" component={Login} />
       <Route path="/sign-up" component={CreateNewUser} />
       {/* private routes below */}
-      <Route exact path="/" component={Dashboard} />
-      <Route path="/add-receipt" component={AddReceipt} />
+      <PrivateRoute exact path="/" component={Dashboard} />
+      <PrivateRoute path="/add-receipt" component={AddReceipt} />
       <Route exact path="/:receiptID" render={props => <ReceiptCard {...props} data={state.data} deleteReceipt={deleteReceipt}/>} />
       <Route exact path="/edit/:receiptID" render={props => <EditReceipt {...props} data={state.data} />} />
 
