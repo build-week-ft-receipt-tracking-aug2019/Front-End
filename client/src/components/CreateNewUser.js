@@ -92,7 +92,7 @@ const FormikForm = withFormik({
   }),
 
   handleSubmit(values, { props, setErrors }) {
-       if (values.email === "waffle@syrup.com"){
+    if (values.email == "waffle@syrup.com") {
       setErrors({ email: "That email is already taken" });
     } else {
       axios

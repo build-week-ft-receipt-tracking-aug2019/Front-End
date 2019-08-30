@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import { Button, Form as SemForm } from "semantic-ui-react";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { addUsernameToState } from "../actions/addUsernameToState";
 
