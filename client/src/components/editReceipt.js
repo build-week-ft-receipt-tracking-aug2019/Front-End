@@ -32,6 +32,7 @@ const EditReceipt = (props) => {
         event.preventDefault()
         props.Edit(formData)
         props.history.push(`/${props.match.params.receiptID}`)
+        // props.history.push(`/`)
     }
 
 
