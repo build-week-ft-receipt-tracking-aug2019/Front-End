@@ -13,7 +13,7 @@ import ReceiptCard from "./ReceiptCard";
 import "../App.css";
 
 const Dashboard = props => {
-  console.log(props);
+
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [counter, setCounter] = useState(false);
@@ -26,13 +26,7 @@ const Dashboard = props => {
   useEffect(() => {
     console.log("Dashboard mounted");
     props.resetAsyncProps();
-  }, []);
-
-  const displayState = () => {
-    console.log(isSearching);
-    console.log(searchResults);
-    console.log(props.data);
-  };
+  }, [])
 
   console.log("FROM THE DASH-", props.data);
   const panes = [
@@ -63,7 +57,7 @@ const Dashboard = props => {
             </div>
             {isSearching === false
               ? props.data.map(data => {
-                  console.log(data);
+    
                   return (
                     <Link
                       to={`/${data.id}`}
@@ -81,7 +75,8 @@ const Dashboard = props => {
                     </Link>
                   );
                 })
-              : searchResults.map(data => {
+              : searchResults && searchResults.map(data => {
+                console.log(searchResults)
                   return (
                     <Link
                       to={`/${data.id}`}

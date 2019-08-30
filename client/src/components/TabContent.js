@@ -4,7 +4,7 @@ import { Image } from 'cloudinary-react';
 import '../App.css'
 
 const TabContent = (props) => {
-  const [receipt, setReceipt] = useState({})
+  // const [receipt, setReceipt] = useState({})
   // console.log('PROPS WITHIN TABCONTENT', props)
   //console.log('receipt', receipt)
 
@@ -13,22 +13,25 @@ const TabContent = props => {
   console.log("PROPS WITHIN TABCONTENT", props);
   console.log("receipt", receipt);
 
-  useEffect(() => {
-    setReceipt(props.data.filter(item => item.id === props.id));
-  }, []);
 
-  // const { merchant, date, total, id } = props;
+  // useEffect(() => {
+  //   setReceipt(props.data.filter(item => item.id === props.id))
+  // }, [])
+
+  const { merchant, date, total, id } = props; 
   return (
     <div className="tab">
-      {receipt.length && (
+      {
+        // receipt.length &&
+
         <div className="tabContent">
           <div className="nameDateCol">
-            <h3 className='meta'>{receipt[0].merchant}</h3>
-            <h4>{receipt[0].date}</h4>
-            <h3>Total: ${receipt[0].amount_spent}</h3>
+            <h3 className='meta'>{merchant}</h3>
+            <h4>{date}</h4>
+            <h3>Total: ${total}</h3>
           </div>
           <div className="totalCol">
-<<<<<<< HEAD
+
             <div className="editCard">Edit</div>
             <div
               className="deleteCard"
@@ -41,10 +44,11 @@ const TabContent = props => {
               X
             </div>
             <h3>Total: ${receipt[0].amount_spent}</h3>
-=======
+
             <p>Image preview:</p>
-            <Image className="rec-img-prev" cloudName={'argordon'} publicId={`${props.id}`} />
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
+
+            <Image className="rec-img-prev" cloudName={'argordon'} publicId={`${id}`} />
+
           </div>
         </div>
       )}
