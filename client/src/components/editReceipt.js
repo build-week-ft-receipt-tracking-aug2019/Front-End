@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form as SemForm } from "semantic-ui-react";
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { Edit } from '../actions/index'
 import { connect } from 'react-redux'

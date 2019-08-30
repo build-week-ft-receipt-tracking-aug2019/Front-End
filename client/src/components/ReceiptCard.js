@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Item } from "semantic-ui-react";
-import { Image } from 'cloudinary-react';
+import { Image, Transformation } from 'cloudinary-react';
 import styled from "styled-components";
 import { connect } from 'react-redux';
 import {deleteReceipt} from '../actions/deleteReceipt'

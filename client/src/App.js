@@ -24,13 +24,24 @@ function App(state) {
         component={CreateNewUser}
       />
       {/* private routes below */}
-
-      <PrivateRoute exact path="/" component={Dashboard} />
-      <PrivateRoute path="/add-receipt" component={AddReceipt} />
-      <Route exact path="/:receiptID" render={props => <ReceiptCard {...props} data={state.data} deleteReceipt={deleteReceipt}/>} />
-      <Route exact path="/edit/:receiptID" render={props => <EditReceipt {...props} data={state.data} />} />
-
-
+      <Route exact path="/" component={Dashboard} />
+      <Route path="/add-receipt" component={AddReceipt} />
+      <PrivateRoute
+        exact
+        path="/:receiptID"
+        render={props => (
+          <ReceiptCard
+            {...props}
+            data={state.data}
+            deleteReceipt={deleteReceipt}
+          />
+        )}
+      />
+      <PrivateRoute
+        exact
+        path="/edit/:receiptID"
+        render={props => <EditReceipt {...props} data={state.data} />}
+      />
     </div>
   );
 }

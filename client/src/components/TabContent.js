@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { Image } from 'cloudinary-react';
 import '../App.css'
