@@ -3,17 +3,17 @@ import { Tab } from "semantic-ui-react";
 import ModalAddReceipt from "./ModalAddReceipt";
 import TabContent from "./TabContent";
 import Spent from "./Spent";
-import { resetAsyncProps } from '../actions';
+import { resetAsyncProps } from "../actions";
 import { getReceipts } from "../actions/getReceipts";
-import {deleteReceipt} from "../actions/deleteReceipt";
-import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { deleteReceipt } from "../actions/deleteReceipt";
+import { connect } from "react-redux";
+import { Route, Link } from "react-router-dom";
 import Search from "./Search";
 import ReceiptCard from "./ReceiptCard";
-import '../App.css'
+import "../App.css";
 
 const Dashboard = props => {
-  console.log(props)
+  console.log(props);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [counter, setCounter] = useState(false);
@@ -24,10 +24,10 @@ const Dashboard = props => {
 
   // Need to put this useEffect in the single Receipt component
   useEffect(() => {
-    console.log('Dashboard mounted');
+    console.log("Dashboard mounted");
     props.resetAsyncProps();
-  }, [])
-  
+  }, []);
+
   const displayState = () => {
     console.log(isSearching);
     console.log(searchResults);
@@ -63,33 +63,39 @@ const Dashboard = props => {
             </div>
             {isSearching === false
               ? props.data.map(data => {
-                console.log(data)
+                  console.log(data);
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter}
-                      counter={counter}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        deleteReceipt={props.deleteReceipt}
+                        setCounter={setCounter}
+                        counter={counter}
+                      />
                     </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter}
-                      counter={counter}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        deleteReceipt={props.deleteReceipt}
+                        setCounter={setCounter}
+                        counter={counter}
+                      />
                     </Link>
                   );
                 })}
@@ -127,31 +133,37 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      setCounter={setCounter}
-                      counter={counter}
-                      deleteReceipt={props.deleteReceipt}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        setCounter={setCounter}
+                        counter={counter}
+                        deleteReceipt={props.deleteReceipt}
+                      />
                     </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      setCounter={setCounter}
-                      counter={counter}
-                      deleteReceipt={props.deleteReceipt}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        setCounter={setCounter}
+                        counter={counter}
+                        deleteReceipt={props.deleteReceipt}
+                      />
                     </Link>
                   );
                 })}
@@ -188,31 +200,37 @@ const Dashboard = props => {
             {isSearching === false
               ? props.data.map(data => {
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter}
-                      counter={counter}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        deleteReceipt={props.deleteReceipt}
+                        setCounter={setCounter}
+                        counter={counter}
+                      />
                     </Link>
                   );
                 })
               : searchResults.map(data => {
                   return (
-                    <Link to={`/${data.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                    <TabContent
-                      merchant={data.merchant}
-                      date={data.date}
-                      total={data.amount_spent}
-                      id={data.id}
-                      deleteReceipt={props.deleteReceipt}
-                      setCounter={setCounter}
-                      counter={counter}
-                    />
+                    <Link
+                      to={`/${data.id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <TabContent
+                        merchant={data.merchant}
+                        date={data.date}
+                        total={data.amount_spent}
+                        id={data.id}
+                        deleteReceipt={props.deleteReceipt}
+                        setCounter={setCounter}
+                        counter={counter}
+                      />
                     </Link>
                   );
                 })}
