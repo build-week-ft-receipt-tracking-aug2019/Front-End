@@ -24,9 +24,9 @@ function App(state) {
         component={CreateNewUser}
       />
       {/* private routes below */}
-      <Route exact path="/" component={Dashboard} />
-      <Route path="/add-receipt" component={AddReceipt} />
-      <PrivateRoute
+      <PrivateRoute exact path="/" component={Dashboard} />
+      <PrivateRoute path="/add-receipt" component={AddReceipt} />
+      <Route
         exact
         path="/:receiptID"
         render={props => (
@@ -37,7 +37,7 @@ function App(state) {
           />
         )}
       />
-      <PrivateRoute
+      <Route
         exact
         path="/edit/:receiptID"
         render={props => <EditReceipt {...props} data={state.data} />}
