@@ -52,6 +52,7 @@ const Dashboard = props => {
             </div>
             {isSearching === false
               ? props.data.map(data => {
+
                 return (
                   <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
@@ -81,6 +82,7 @@ const Dashboard = props => {
                   </Link>
                 );
               })}
+
           </Fragment>
         )
       }
@@ -112,6 +114,7 @@ const Dashboard = props => {
             </div>
             {isSearching === false
               ? props.data.map(data => {
+
                 return (
                   <Link to={`/${data.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <TabContent
@@ -141,6 +144,7 @@ const Dashboard = props => {
                   </Link>
                 );
               })}
+
           </Fragment>
         )
       }
@@ -201,6 +205,7 @@ const Dashboard = props => {
                   </Link>
                 );
               })}
+
           </Fragment>
         )
       }

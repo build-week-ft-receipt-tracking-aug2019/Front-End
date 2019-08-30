@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import { Button, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { Animate, HeadShake, ZoomIn } from "animate-css-styled-components";
 
 const Login = ({ errors, touched }) => {
   return (
     <SemForm className="formContainers">
       <Form className="login-Form">
         <h1>Create an account:</h1>
+        <HeadShake
+          animationIn={ZoomIn}
+          duration="3s"
+          IterationCount={function iterateVal() {
+            let count = 5;
+            console.log(count.type);
+          }}
+        >
+          {/* {console.log(Animate)} */}
+          {/*test for animation */}
+
+          <p>TEST ERROR FOR COOL ANIMATIONS</p>
+          {errors.takenCreds && <p>{errors.takenCreds}</p>}
+        </HeadShake>
+
         <SemForm.Field>
           <Field
             name="username"
@@ -71,26 +87,35 @@ const FormikForm = withFormik({
     username: Yup.string().required(),
     email: Yup.string().required(),
     password: Yup.string()
-    .min(8, "Password must be a minimum of 8 characters or longer")
-    .required()
+      .min(8, "Password must be a minimum of 8 characters or longer")
+      .required()
   }),
 
   handleSubmit(values, { props, setErrors }) {
        if (values.email === "waffle@syrup.com"){
-      setErrors({email: "That email is already taken"}); 
-  } else {
-    axios
-      .post("https://receipt-tracker-api.herokuapp.com/register", values)
-      .then(res => {
-        console.log(values);
-        console.log(res);
-        props.history.push("/login");
-        //   localStorage.setItem('token', res.data.payload);
-      })
-      .catch(err => {
-        console.log(values);
-        console.log(err.response);
-      });
+      setErrors({ email: "That email is already taken" });
+    } else {
+      axios
+        .post("https://receipt-tracker-api.herokuapp.com/register", values)
+        .then(res => {
+          console.log(values);
+          console.log(res);
+          props.history.push("/login");
+          //   localStorage.setItem('token', res.data.payload);
+        })
+        .catch(err => {
+          console.log(values);
+          console.log(err.response);
+          if (err.response.status == 400) {
+            console.log(err.response.data);
+            props.history.push(
+              "./sign-up",
+              setErrors({
+                takenCreds: "That email or username is already in use!"
+              })
+            );
+          }
+        });
     }
   }
 })(Login);
