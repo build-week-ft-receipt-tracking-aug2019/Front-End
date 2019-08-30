@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 import { Edit } from '../actions/index'
 import { connect } from 'react-redux'
 
@@ -37,38 +39,46 @@ const EditReceipt = (props) => {
 
 
     return (
-        <>
-        {formData && <form onSubmit={submitHandler}>
-            <input
-                type='date'
-                name='date'
-                onChange={event => changeHandler(event)}
-                value={formData.date}
-            />
-            <input
-                type="number"
-                step="0.01"
-                min="0"
-                max="100000"
-                name="amount_spent"
-                onChange={event => changeHandler(event)}
-                value={formData.amount_spent}
-            />
-            <input
-                type="text"
-                name="category"
-                onChange={event => changeHandler(event)}
-                value={formData.category}
-            />
-            <input
-                type="text"
-                name="merchant"
-                onChange={event => changeHandler(event)}
-                value={formData.merchant}
-            />
-            <button>change</button>
-        </form>}
-        </>
+        <SemForm>
+            {formData && <form onSubmit={submitHandler}>
+                <SemForm.Field>
+                    <input
+                        type='date'
+                        name='date'
+                        onChange={event => changeHandler(event)}
+                        value={formData.date}
+                    />
+                </SemForm.Field>
+                <SemForm.Field>
+                    <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        max="100000"
+                        name="amount_spent"
+                        onChange={event => changeHandler(event)}
+                        value={formData.amount_spent}
+                    />
+                </SemForm.Field>
+                <SemForm.Field>
+                    <input
+                        type="text"
+                        name="category"
+                        onChange={event => changeHandler(event)}
+                        value={formData.category}
+                    />
+                </SemForm.Field>
+                <SemForm.Field>
+                    <input
+                        type="text"
+                        name="merchant"
+                        onChange={event => changeHandler(event)}
+                        value={formData.merchant}
+                    />
+                </SemForm.Field>
+                <Button>change</Button>
+            </form>}
+        </SemForm>
     )
 }
 
