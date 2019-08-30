@@ -5,7 +5,7 @@ import { Button, Checkbox, Form as SemForm } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 import { addNewReceipt, uploadPic } from "../actions/index";
-
+import { data as optionData } from '../data/data';
 
 const errorStyle = {
   fontSize: "1em",
@@ -46,7 +46,7 @@ const AddReceiptForm = props => {
 
   // Will need to push to `users/receipts/${pros.rec_id}`
   // Note the useEffect on the Dashboard.js to 
-  props.pic_success === true && props.history.push('/');
+  props.pic_success && props.history.push('/');
 
   return (
     <div>
@@ -81,12 +81,14 @@ const AddReceiptForm = props => {
           </SemForm.Field>
 
           <SemForm.Field>
-            <input 
-              type="text" 
+            <select 
               name="category" 
-              placeholder="selector for category will go here" 
               onChange={(event) => setFormData({...formData, category: event.target.value})}
-            />
+            >
+              {optionData.map(cat => {
+                return <option name='category' value={cat.option}>{cat.option}</option>
+              })}
+            </select>
           {/* {touched.category && errors.category && (<p> style={errorStyle}>{errors.category}</p>)} */}
           </SemForm.Field>
 
