@@ -20,9 +20,8 @@ const Login = ({ errors, touched }) => {
           }}
         >
           {/* {console.log(Animate)} */}
-          {/*test for animation */}
-
-          <p>TEST ERROR FOR COOL ANIMATIONS</p>
+          
+          
           {errors.takenCreds && <p>{errors.takenCreds}</p>}
         </HeadShake>
 
