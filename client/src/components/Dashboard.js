@@ -52,7 +52,7 @@ const Dashboard = props => {
                 />
               )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+                null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
@@ -95,7 +95,7 @@ const Dashboard = props => {
                   );
                 })}
 
-            <Spent time={"month"} />
+            {/* <Spent time={"month"} /> */}
           </Fragment>
         )
       }
@@ -122,7 +122,7 @@ const Dashboard = props => {
                 />
               )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+                null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
@@ -162,7 +162,7 @@ const Dashboard = props => {
                     </Link>
                   );
                 })}
-            <Spent time={"3 months"} />
+           {/* <Spent time={"3 months"} /> */}
           </Fragment>
         )
       }
@@ -189,7 +189,7 @@ const Dashboard = props => {
                 />
               )}
               {!isSearching && (
-                <ModalAddReceipt setCounter={setCounter} counter={counter} />
+                null//<ModalAddReceipt setCounter={setCounter} counter={counter} />
               )}
             </div>
             {isSearching === false
@@ -229,7 +229,7 @@ const Dashboard = props => {
                     </Link>
                   );
                 })}
-            <Spent time={"year"} />
+            {/* <Spent time={"year"} /> */}
           </Fragment>
         )
       }

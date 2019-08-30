@@ -8,12 +8,6 @@ const TabContent = (props) => {
   // console.log('PROPS WITHIN TABCONTENT', props)
   //console.log('receipt', receipt)
 
-const TabContent = props => {
-  const [receipt, setReceipt] = useState({});
-  console.log("PROPS WITHIN TABCONTENT", props);
-  console.log("receipt", receipt);
-
-
   // useEffect(() => {
   //   setReceipt(props.data.filter(item => item.id === props.id))
   // }, [])
@@ -32,7 +26,7 @@ const TabContent = props => {
           </div>
           <div className="totalCol">
 
-            <div className="editCard">Edit</div>
+            {/* <div className="editCard">Edit</div>
             <div
               className="deleteCard"
               onClick={event => {
@@ -42,8 +36,7 @@ const TabContent = props => {
               }}
             >
               X
-            </div>
-            <h3>Total: ${receipt[0].amount_spent}</h3>
+            </div> */}
 
             <p>Image preview:</p>
 
@@ -51,7 +44,7 @@ const TabContent = props => {
 
           </div>
         </div>
-      )}
+      }
     </div>
   );
 };

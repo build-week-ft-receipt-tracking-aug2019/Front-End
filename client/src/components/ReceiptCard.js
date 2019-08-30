@@ -66,23 +66,13 @@ const ReceiptCard = (props) => {
               </ReceiptImage>
             </Content>
           </StyledReceiptItem>
-<<<<<<< HEAD
-          <div className="buttons">
-            <button className="edit-btn">Edit</button>
-            <button className="del-btn">Delete</button>
-=======
           <div className='buttons'>
             <Link to={`/edit/${props.match.params.receiptID}`}><div className='edit-btn'>Edit</div></Link>
             <div className='del-btn' onClick={()=>deleteHandler()}>Delete</div>
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
           </div>
         </>
       )}
     </Item>
-<<<<<<< HEAD
-  );
-}
-=======
 
 
   )
@@ -95,4 +85,3 @@ const ReceiptCard = (props) => {
     };
 
 export default connect(mapPropsToState, {deleteReceipt})(ReceiptCard)
->>>>>>> 81e9dd6cf5f12915a51d476c21646666b438469b
