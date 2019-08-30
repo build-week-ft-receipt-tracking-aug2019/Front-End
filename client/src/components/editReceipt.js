@@ -9,14 +9,6 @@ import { connect } from 'react-redux'
 const EditReceipt = (props) => {
     const [formData, setFormData] = useState({});
 
-    // const initialState = {
-    //     date: '',
-    //     amount_spent: null,
-    //     category: '',
-    //     merchant: '',
-    //     user_username: props.user_username
-    // };
-
     useEffect(() => {
         console.log(props.match.params.receiptID)
         let currentReceipt = props.data.filter(item => item.id.toString() === props.match.params.receiptID)
