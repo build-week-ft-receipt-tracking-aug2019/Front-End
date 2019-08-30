@@ -13,7 +13,7 @@ export const Edit = receiptEdited => {
             })
             .catch(err => {
                 console.log(err);
-                dispatch({ type: ERROR });
+                dispatch({ type: ERROR, payload: err });
             })
     }
 };

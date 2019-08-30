@@ -90,11 +90,17 @@ export const receiptReducer = (state = initialState, action) => {
                 error: ''
             };
         case EDIT_RECEIPT_SUCCESS:
-            let newData = state.data.id != action.payload.id;
-            newData.push(action.payload);
+            // let newData = state.data.filter(state.data.id !== action.payload.id);
+            // newData.push(action.payload);
             return {
                 ...state,
-                data: newData
+                data: [state.data.map(item => {
+                    if (item.id === action.payload.id) {
+                        return action.payload
+                    } else {
+                        return item
+                    }
+                })]
             };
         case ERROR:
             return {

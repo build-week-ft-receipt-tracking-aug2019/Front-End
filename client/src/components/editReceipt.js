@@ -1,34 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Edit } from '../actions/index'
+import { connect } from 'react-redux'
 
 
 
 const EditReceipt = (props) => {
-    const [formData, setFormData] = useState(initialState);
+    const [formData, setFormData] = useState({});
 
-    const initialState = {
-        date: '',
-        amount_spent: null,
-        category: '',
-        merchant: '',
-        user_username: props.user_username
-    };
+    // const initialState = {
+    //     date: '',
+    //     amount_spent: null,
+    //     category: '',
+    //     merchant: '',
+    //     user_username: props.user_username
+    // };
+
+    useEffect(() => {
+        console.log(props.match.params.receiptID)
+        let currentReceipt = props.data.filter(item => item.id.toString() === props.match.params.receiptID)
+        console.log(currentReceipt[0])
+        setFormData(currentReceipt[0])
+    }, [])
 
     const changeHandler = (event) => {
-        setFormData({...formData, [event.target.name]: event.target.value})
+        setFormData({ ...formData, [event.target.name]: event.target.value })
+        console.log(formData)
 
     }
 
     const submitHandler = (event) => {
         event.preventDefault()
         props.Edit(formData)
+        props.history.push(`/${props.match.params.receiptID}`)
     }
 
 
-
     return (
-
-        <form onSubmit={submitHandler}>
+        <>
+        {formData && <form onSubmit={submitHandler}>
             <input
                 type='date'
                 name='date'
@@ -57,7 +66,8 @@ const EditReceipt = (props) => {
                 value={formData.merchant}
             />
             <button>change</button>
-        </form>
+        </form>}
+        </>
     )
 }
 
@@ -69,6 +79,6 @@ const mapPropsToState = state => {
 };
 
 export default connect(
-  mapPropsToState,
-  { Edit }
-  )(EditReceipt);
+    mapPropsToState,
+    { Edit }
+)(EditReceipt);
