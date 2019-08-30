@@ -4,6 +4,7 @@ import { Image, Transformation } from 'cloudinary-react';
 import styled from "styled-components";
 import { connect } from 'react-redux';
 import {deleteReceipt} from '../actions/deleteReceipt'
+import { Link } from 'react-router-dom'
 
 
 const StyledReceiptItem = styled.div`
@@ -62,7 +63,7 @@ const ReceiptCard = (props) => {
             </Content>
           </StyledReceiptItem>
           <div className='buttons'>
-            <div className='edit-btn'>Edit</div>
+            <Link to={`/edit/${props.match.params.receiptID}`}><div className='edit-btn'>Edit</div></Link>
             <div className='del-btn' onClick={()=>deleteHandler()}>Delete</div>
           </div>
         </>

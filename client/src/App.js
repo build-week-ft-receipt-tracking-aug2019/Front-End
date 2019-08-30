@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import AddReceipt from "./components/AddReceipt";
 import ReceiptCard from "./components/ReceiptCard";
 import { deleteReceipt } from "./actions/deleteReceipt";
+import EditReceipt from "./components/editReceipt";
 
 function App(state) {
   console.log(state)
@@ -22,6 +23,8 @@ function App(state) {
       <Route exact path="/" component={Dashboard} />
       <Route path="/add-receipt" component={AddReceipt} />
       <Route exact path="/:receiptID" render={props => <ReceiptCard {...props} data={state.data} deleteReceipt={deleteReceipt}/>} />
+      <Route exact path="/edit/:receiptID" render={props => <EditReceipt {...props} data={state.data} />} />
+
     </div>
   );
 }
@@ -37,4 +40,4 @@ const mapPropsToState = state => {
   }
 }
 
-export default connect(mapPropsToState, {deleteReceipt})(App);
+export default connect(mapPropsToState, {deleteReceipt, EditReceipt})(App);

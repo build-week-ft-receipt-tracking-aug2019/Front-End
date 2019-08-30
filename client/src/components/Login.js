@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
@@ -14,6 +14,7 @@ const errorStyle = {
 };
 
 const Login = ({ errors, touched }) => {
+  const [ incorrect, setIncorrect ] = useState()
   return (
     <SemForm className="formContainers">
       <Form className="login-Form">
@@ -51,6 +52,7 @@ const Login = ({ errors, touched }) => {
           Login &rarr;
         </Button>
       </Form>
+      {incorrect && <h2>username or password incorrect</h2>}
     </SemForm>
   );
 };
@@ -81,7 +83,6 @@ const FormikForm = withFormik({
       .catch(err => {
         console.log(values);
         console.log(err.response);
-        props.history.push("/");
       });
   }
 })(Login);

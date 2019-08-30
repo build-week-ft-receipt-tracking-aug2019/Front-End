@@ -3,6 +3,8 @@ import {
     FETCH_RECEIPTS_SUCCESS,
     ADD_RECEIPT_START,
     ADD_RECEIPT_SUCCESS,
+    EDIT_RECEIPT_START,
+    EDIT_RECEIPT_SUCCESS,
     ADD_USERNAME_TO_STATE,
     ADD_REC_ID_TO_STATE,
     PIC_UPLOAD_START,
@@ -80,6 +82,25 @@ export const receiptReducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: state.data.filter(state.data.id !== action.payload.id)
+            };
+        case EDIT_RECEIPT_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            };
+        case EDIT_RECEIPT_SUCCESS:
+            // let newData = state.data.filter(state.data.id !== action.payload.id);
+            // newData.push(action.payload);
+            return {
+                ...state,
+                data: [state.data.map(item => {
+                    if (item.id === action.payload.id) {
+                        return action.payload
+                    } else {
+                        return item
+                    }
+                })]
             };
         case ERROR:
             return {
