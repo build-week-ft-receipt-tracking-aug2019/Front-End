@@ -14,10 +14,7 @@ const Login = ({ errors, touched }) => {
         <HeadShake
           animationIn={ZoomIn}
           duration="3s"
-          IterationCount={function iterateVal() {
-            let count = 5;
-            console.log(count.type);
-          }}
+          iterationCount='5'
         >
           {/* {console.log(Animate)} */}
           
